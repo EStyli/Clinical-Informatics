@@ -1,4 +1,5 @@
-# Application for 2023 NHS Scientist Training Programme in Clinical Informatics
+# Application for 2023 NHS Scientist Training Programme in Clinical Informatics 
+https://nshcs.hee.nhs.uk/publications/scientist-training-programme-core-person-specification-2023/html/
 Connecting computing science, information science, biology and medicine - for research and development
 https://facultyofclinicalinformatics.org.uk/ -  competencies and skillsets required for clinical informatician
 1. Ensure data received and generated is interpreted and used in an efficient, standardised, secure and accurate manner.
