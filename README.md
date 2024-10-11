@@ -31,37 +31,16 @@ As part of my training, I am developing skills and gaining experience in:
 
 The training programme is structured into core, rotation, and specialist modules, culminating in an MSc in Clinical Science and eligibility for registration as a Clinical Scientist with the Health and Care Professions Council.
 
-| **Phase** | **Modules** | **Credits** |
+| Phase | Modules | Credits |
 | --- | --- | --- |
-| Throughout | Professional Foundations of Healthcare and Clinical Science
-
-Individual Professional Development
-
- | 20
-
-0
-
- |
+| Throughout | Professional Foundations of Healthcare and Clinical Science | 20 |
+| Throughout | Individual Professional Development | 0 |
 | 1 | Rotation modules | 40 |
-| 2 | Research Skills in Healthcare Science
-
-Specialist module(s)
-
- | 10
-
-20
-
- |
-| 3 | STP Project
-
-Specialist module(s)
-
- | 60
-
-30
-
- |
-| Total Credits |  | 180 |
+| 2 | Research Skills in Healthcare Science | 10 |
+| 2 | Specialist module(s) | 20 |
+| 3 | STP Project | 60 |
+| 3 | Specialist module(s) | 30 |
+| **Total Credits** |  | **180** |
 
 ### Professional Foundations of Healthcare and Clinical Science (S-C1) Training Activities
 
