@@ -1,4 +1,4 @@
-# Clinical Informatics at Guy's and St Thomas' NHS Foundation Trust
+# NHS STP Clinical Informatics [SBI1-3-23]
 
 ## About Clinical Informatics
 
@@ -6,31 +6,26 @@
 
 ## My Role
 
-I am a Clinical Informatics trainee within the [Clinical Scientific Computing](https://gstt-csc.github.io) team at Guy's and St Thomas' NHS Foundation Trust (GSTT). I started this position in September 2023, following the [National School of Healthcare Science (NSHCS) curriculum](https://nshcs.hee.nhs.uk/publications/scientist-training-programme-core-person-specification-2023/html/) 'Clinical Informatics [SBI1-3-23]'.
+I am a Clinical Informatics trainee within the [Clinical Scientific Computing](https://gstt-csc.github.io) team at Guy's and St Thomas' NHS Foundation Trust (GSTT). I started this position in September 2023 and am following the three-year Scientist Training Programme and adhering to the [National School of Healthcare Science (NSHCS) curriculum](https://nshcs.hee.nhs.uk/publications/scientist-training-programme-core-person-specification-2023/html/).
 
-## Key Areas of Experience
 
-As part of my training, I am gaining experience in:
+## Key Skills and Experience Areas
+
+As part of my training, I am developing skills and gaining experience in:
 
 - Medical software and AI development
-- Clinical decision making
-- Business intelligence
-- Genomics
-- Hospital data usage across various domains
-
-## Skills Development
-
-Throughout my training, I am developing skills in:
-
-- Clinical validation and deployment of AI
+  - Clinical validation and deployment of AI
+  - AI model training for medical imaging
+- Clinical decision support systems
+- Data science and analytics
+  - Business intelligence in healthcare
+  - Data curation and management
+- Genomics and bioinformatics
+- Clinical system integration and connectivity
 - Software development and programming
-- AI model training for medical imaging
-- Data curation
 - Maintenance of clinical software
 - Policy and regulation around clinical data usage
-- Clinical system connectivity and integration
-- Genomics applications
-- Business intelligence in healthcare
+- Hospital data utilization across various domains
 
 ## Programme Structure
 
