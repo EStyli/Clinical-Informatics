@@ -6,7 +6,7 @@
 
 ## My Role
 
-I am a Clinical Informatics trainee within the [Clinical Scientific Computing](https://gstt-csc.github.io) team at Guy's and St Thomas' NHS Foundation Trust (GSTT). I started this position in September 2023 and am following the three-year Scientist Training Programme and adhering to the [National School of Healthcare Science (NSHCS) curriculum](https://nshcs.hee.nhs.uk/publications/scientist-training-programme-core-person-specification-2023/html/).
+I am a Clinical Informatics trainee within the [Clinical Scientific Computing](https://gstt-csc.github.io) team at Guy's and St Thomas' NHS Foundation Trust (GSTT). I started this position in September 2023 and am following the three-year Scientist Training Programme and adhering to the [National School of Healthcare Science (NSHCS) curriculum](https://curriculumlibrary.nshcs.org.uk/stp/specialty/SBI1-3-23/).
 
 
 ## Key Skills and Experience Areas
