@@ -1,3 +1,8 @@
+---
+layout: default
+title: Home
+---
+
 # NHS STP Clinical Informatics [SBI1-3-23]
 
 ## About Clinical Informatics
