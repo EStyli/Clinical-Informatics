@@ -1,9 +1,7 @@
 ---
 layout: default
-title: Interactive Personal Wellbeing Objectives Plan
+title: Personal Wellbeing Objectives
 ---
-
-# Interactive Personal Wellbeing Objectives Plan
 
 ## 1. Sleep Hygiene and Health Monitoring
 
