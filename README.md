@@ -46,7 +46,7 @@ The training programme is structured into core, rotation, and specialist modules
 
 As part of the core module S-C1, trainees complete the following Direct Training Activities (DTAs). You can find my work on these activities in the [C1_Professional_Foundations](./C1_Professional_Foundations) folder.
 
-1. [Set personal wellbeing objectives for the STP duration](./C1_Professional_Foundations/1_WellbeingPlan.html)
+1. [Set personal wellbeing objectives for the STP duration](./C1_Professional_Foundations/1_WellbeingPlan.md)
 2. Reflect on good practice experiences
 3. Reflect on challenging experiences
 4. Audit personal digital footprint
