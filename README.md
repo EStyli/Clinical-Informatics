@@ -20,7 +20,6 @@ As part of my training, I am developing skills and gaining experience in:
 - Data science and analytics
   - Business intelligence in healthcare
   - Data curation and management
-- Genomics and bioinformatics
 - Clinical system integration and connectivity
 - Software development and programming
 - Maintenance of clinical software
