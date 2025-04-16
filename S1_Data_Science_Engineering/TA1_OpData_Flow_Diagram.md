@@ -1,148 +1,129 @@
-# Guy's and St Thomas' Hospital Data Flow Analysis
+# Analysing and Visualising Operational Data
 
-## Hospital Data Sources and Operational Flow
+**Analyse an existing operational data set to determine the original sources of data and present this information in a diagram**
 
-### Primary Hospital Data Sources
+Date Completed: 16/04/2025  
+Supervisor: Anil Mistry
 
-| Data Source | Description | Examples |
-|-------------|-------------|----------|
-| **Clinical Information Systems** | Electronic patient record systems used for direct clinical care | • EPIC Electronic Health Record<br>• Specialty clinical systems (e.g., ICU, dialysis)<br>• Patient observations and vital signs systems<br>• Digital imaging systems (PACS/RIS) |
-| **Administrative Systems** | Systems managing non-clinical hospital operations | • Patient Administration System (PAS)<br>• Appointment scheduling systems<br>• Patient registration and demographics<br>• Bed management systems |
-| **Diagnostic Services Data** | Laboratory and diagnostic test information | • Pathology information systems<br>• Radiology information systems<br>• Specialized diagnostic equipment outputs<br>• Point-of-care testing data |
-| **Pharmacy & Medication Data** | Medication prescribing and administration | • Electronic prescribing systems<br>• Medication administration records<br>• Drug stock management<br>• Controlled drug registers |
-| **Theatre & Procedure Systems** | Surgical and procedural documentation | • Theatre management systems<br>• Procedure documentation<br>• Anesthesia information systems<br>• Surgical outcome recording |
+Guy's and St Thomas' Trust operates within the broader NHS data ecosystem, where information flows from multiple sources through various systems before ultimately being used for operational management, clinical improvement, and external reporting. Understanding these data flows is essential for effective data governance, research applications, and service improvement initiatives.
 
-### Hospital Operational Data Integration
+## Primary Hospital Data Sources
 
-| Process | Description |
-|---------|-------------|
-| **Data Warehousing & Integration** | • Integration of data from multiple hospital systems<br>• Data cleaning and standardization processes<br>• Creation of linked patient records<br>• Data quality monitoring and improvement |
-| **Information Governance Processes** | • Patient consent management<br>• Data protection impact assessments<br>• Access control and audit procedures<br>• Data anonymization/pseudonymization |
+The hospital's data ecosystem begins with several key clinical and administrative systems that capture patient information at the point of care:
 
-### Guy's and St Thomas' Local Datasets
+### Clinical Information Systems
+At the heart of the Trust's data infrastructure is the EPIC Electronic Health Record system, which I identified as a knowledge gap in my experience. EPIC serves as the primary repository for clinical information, capturing patient data across all hospital departments. Specialty clinical systems (such as those used in ICU and gastroenterology), patient observation systems, and digital imaging systems (PACS/RIS) feed into this central resource.
 
-| Dataset Type | Description |
-|--------------|-------------|
-| **Operational Dashboards** | • Real-time hospital performance metrics<br>• Bed occupancy and patient flow monitoring<br>• Emergency department wait times<br>• Theatre utilization statistics |
-| **Clinical Quality Datasets** | • Infection control monitoring<br>• Patient safety incident recording<br>• Clinical outcomes tracking<br>• Mortality and morbidity information |
-| **Service-Specific Collections** | • Specialty-specific audit databases<br>• Local clinical registries<br>• Research databases<br>• Quality improvement project data |
+### Diagnostic Services Data
+During my shadowing session with Monika, a CLIMP Information Analyst (17/01/25), I observed how radiology data flows through the system. The Radiology Information System captures diagnostic imaging tests that ultimately contribute to national datasets such as the Diagnostic Imaging Data Set (DID). Monika demonstrated how radiologists and consultants use data extracted from EPIC workbench for job planning and clearing reporting backlogs. This data is presented in pivot tables stored on the Radiology shared drive, showing metrics such as reporting backlogs, examination types, and potential data quality issues.
 
-### External Data Flows
+### Administrative and Operational Systems
+The Trust utilizes Patient Administration Systems (PAS), appointment scheduling, and bed management systems to capture non-clinical operational data. These systems generate data that feeds into performance monitoring metrics such as the Diagnostics Waiting Times and Activity Dashboard (DM01), which tracks performance against national standards for waiting times.
 
-| Flow Type | Description |
-|-----------|-------------|
-| **NHS Data Submissions** | • Hospital Episode Statistics (HES)<br>• Emergency Care Dataset (ECDS)<br>• Mental Health Services Dataset (MHSDS)<br>• Diagnostic Imaging Dataset (DIDS) |
-| **Regulatory Reporting** | • CQC data submissions<br>• National clinical audit participation<br>• Public health mandatory reporting<br>• Commissioning data requirements |
-| **Regional Data Sharing** | • Local Health and Care Record (LHCR)<br>• Integrated Care System (ICS) data sharing<br>• South East London CCG data submissions<br>• Regional clinical network data |
+## Data Integration and Warehousing
 
-### Supplementary Data Sources
+Data from these disparate sources doesn't exist in isolation. The Trust employs a sophisticated data integration approach:
 
-| Source | Description |
-|--------|-------------|
-| **Primary Care Data** | • GP referral information<br>• Shared care records<br>• Community health service data<br>• Patient pathway tracking |
-| **Social Care Integration** | • Discharge planning information<br>• Social care assessment data<br>• Care package information<br>• Multi-agency safeguarding data |
-| **Patient-Generated Data** | • Patient-reported outcome measures (PROMs)<br>• Patient experience surveys<br>• Remote monitoring inputs<br>• Patient portal interactions |
+The Business Intelligence team utilizes the hospital's Microsoft SQL Server Management System (SSMS) data warehouse (GDW) to store and process data extracted from source systems. This centralized repository enables comprehensive analysis across clinical services and departments. As Monika explained, this data warehouse is critical for preparing submissions to NHS England and generating the operational reports used by clinical departments.
 
-### Data Usage at Guy's and St Thomas'
+Data integration involves extraction from source systems, transformation to standardized formats, quality validation, and loading into the warehouse structure. SNOMED CT (Systematized Nomenclature of Medicine Clinical Terms) plays a crucial role in this pipeline, serving as the standard clinical terminology that enables consistent recording and comparison of clinical information. This standardization supports both patient care and subsequent data extraction and exchange.
 
-| Usage Area | Applications |
-|------------|-------------|
-| **Operational Management** | • Capacity planning and resource allocation<br>• Staff scheduling and workforce planning<br>• Financial management and reporting<br>• Operational performance improvement |
-| **Clinical Service Improvement** | • Pathway redesign initiatives<br>• Clinical quality improvement projects<br>• Patient flow optimization<br>• Length of stay reduction programs |
-| **Research & Innovation** | • Clinical trials participant identification<br>• Health services research<br>• AI and predictive analytics development<br>• Novel intervention evaluation |
-| **Teaching & Education** | • Clinical case reviews and teaching<br>• Audit and quality improvement training<br>• Clinical decision support development<br>• Professional development assessment |
+## Local Datasets and Operational Intelligence
 
-## Guy's and St Thomas' Hospital Data Flow Diagram
+The Trust generates several key local datasets that support operational management and clinical quality monitoring:
+
+### Operational Dashboards
+Real-time hospital performance metrics are critical for day-to-day management. During my shadowing experience with Monika, I observed how Radiology-level operational information is extracted from EPIC workbench and utilized across multiple hospitals (KCH, RBH, GSTT). These dashboards track metrics such as reporting backlogs, scan volumes, and departmental performance.
+
+### Clinical Quality Monitoring
+The Trust maintains datasets for infection control, patient safety incident recording, clinical outcomes tracking, and mortality and morbidity information. These datasets enable continuous quality improvement and identification of areas requiring intervention.
+
+## External Data Flows and National Submissions
+
+Local hospital data doesn't remain isolated within the Trust. It feeds into national datasets and external reporting systems:
+
+### NHS Data Submissions
+The hospital contributes to several national datasets, including Hospital Episode Statistics (HES), which contains details about admissions, outpatient appointments, and historical A&E attendances. The Diagnostic Imaging Data Set (DID) is created from monthly submissions extracted from local radiology information systems. As observed during my shadowing session, the Business Intelligence team is responsible for preparing and submitting this data to NHS England.
+
+### Regulatory Reporting
+The Trust must also submit data to regulatory bodies such as the Care Quality Commission (CQC) and participate in national clinical audits. These external data flows ensure compliance with national standards and contribute to healthcare system-wide monitoring.
+
+## Data Usage and Applications
+
+The integrated data ultimately serves multiple purposes within the Trust:
+
+### Operational Management
+As witnessed in the Radiology department, data is used for resource allocation, staff scheduling, and performance improvement. Consultants and radiologists utilize reports from EPIC workbench for job planning and managing workloads, particularly for clearing backlogs in areas like neurological scan reporting.
+
+### Clinical Service Improvement
+Data analysis drives pathway redesign initiatives, clinical quality improvement projects, and patient flow optimization. The insights derived from integrated datasets help identify bottlenecks, inefficiencies, and opportunities for service enhancement.
+
+### Research and Innovation
+The Trust's rich data resources support clinical trials, health services research, and the development of AI and predictive analytics. These research activities often require careful mapping of data flows to ensure appropriate governance, particularly when applying for research approvals under regulations such as COPI Regulations to CAG for section 251.
+
+## Data Flow Diagram: Guy's and St Thomas' Hospital (Radiology)
 
 ```mermaid
 graph TD
-    subgraph "GUY'S AND ST THOMAS' HOSPITAL DATA SOURCES"
-        A1[Clinical Information Systems] --> |Data flows to| D[Data Warehousing and Integration]
-        A2[Administrative Systems] --> |Data flows to| D
-        A3[Diagnostic Services Data] --> |Data flows to| D
-        A4[Pharmacy & Medication Data] --> |Data flows to| D
-        A5[Theatre & Procedure Systems] --> |Data flows to| D
-        A6[Supplementary Data Sources] --> |Data flows to| D
+    subgraph "ORIGINAL DATA SOURCES"
+        A1[EPIC Electronic Health Record] --> |Primary data capture| D[Data Warehousing - GDW]
+        A2[Administrative Systems/PAS] --> |Demographic & scheduling data| D
+        A3[Radiology Information System] --> |Imaging requests & reports| D
+        A4[Pathology Systems] --> |Test results| D
+        A5[Theatre & Procedure Systems] --> |Surgical data| D
     end
 
-    subgraph "DATA WAREHOUSING AND INTEGRATION"
-        D --> |Processed data flows to| E[Guy's and St Thomas' Local Datasets]
+    subgraph "DATA INTEGRATION PROCESSES"
+        D --> |SNOMED CT standardization| E[Local Operational Datasets]
+        D --> |SQL extraction| E
     end
 
-    subgraph "GUY'S AND ST THOMAS' LOCAL DATASETS"
-        E --> E1[Operational Dashboards]
-        E --> E2[Clinical Quality Datasets]
-        E --> E3[Service-Specific Collections]
-        E1 --> |Data feeds into| F[External Data Flows]
-        E2 --> |Data feeds into| F
-        E3 --> |Data feeds into| F
+    subgraph "OPERATIONAL DATASETS"
+        E --> E1[Radiology Pivot Tables]
+        E --> E2[Reporting Backlog Monitors]
+        E --> E3[Department-Specific Reports]
+        E1 --> |Used by managers| F[External Reporting]
+        E2 --> |Performance tracking| F
+        E3 --> |Service monitoring| F
     end
 
-    subgraph "EXTERNAL DATA FLOWS"
-        F --> F1[NHS Data Submissions]
-        F --> F2[Regulatory Reporting]
-        F --> F3[Regional Data Sharing]
-        F --> |Data supports| G[Data Usage]
+    subgraph "EXTERNAL DATA SUBMISSIONS"
+        F --> F1[HES Submissions]
+        F --> F2[DID Submissions]
+        F --> F3[DM01 Dashboard]
+        F --> |Regulatory compliance| G[Data Applications]
     end
 
-    subgraph "DATA USAGE AT GUY'S AND ST THOMAS'"
-        G --> G1[Operational Management]
-        G --> G2[Clinical Service Improvement]
-        G --> G3[Research & Innovation]
-        G --> G4[Teaching & Education]
+    subgraph "DATA USAGE"
+        G --> G1[Job Planning]
+        G --> G2[Backlog Management]
+        G --> G3[Quality Improvement]
+        G --> G4[Service Planning]
     end
 ```
 
-## Clinical Information Systems Details
+## Reflection
 
-- **EPIC Electronic Health Record**: Central repository for patient clinical information
-- **Specialty clinical systems**: Specialized systems for specific departments (ICU, dialysis, cardiology)
-- **Patient observation systems**: Capture vital signs and nursing observations
-- **Digital imaging (PACS/RIS)**: Store and manage radiological images and reports
+I've identified several challenges and knowledge gaps that present opportunities for further learning. I lack direct experience with EPIC and would like to understand how Cogito works within this environment. I'm particularly interested in how gastroenterology operational data is analyzed and whether there's a dedicated reporting team I could speak with. Additional areas for exploration include AIDOC Pulmonary Embolism/PERT Retrospective analysis, EPIC Hyperspace/Cogito/Caboodle Access, and further understanding of the GDW (Guy's Data Warehouse) system.
 
-## Administrative Systems Details
+Data quality remains a significant challenge, as highlighted during my shadowing session with Monika. Complications arise when tracking multiple scans for a single patient, which can appear as an inflated backlog when only the first scan has been reported. These data quality issues require careful monitoring and interpretation to ensure accurate operational intelligence.
 
-- **Patient Administration System (PAS)**: Core system for patient demographics and encounters
-- **Appointment scheduling**: Systems managing outpatient and procedure bookings
-- **Patient registration**: Collection of patient demographic information
-- **Bed management systems**: Track bed availability and patient placement
+The hospital data landscape at Guy's and St Thomas' represents a complex ecosystem where information flows from diverse clinical and administrative sources through standardized integration processes into operational datasets and external submissions. Understanding these data pathways is essential for effective service management, quality improvement, and research initiatives.
 
-## Data Integration Processes
+My shadowing experience with Monika provided valuable insights into how theoretical data flows manifest in practical applications within the Radiology department. The operational data generated from EPIC and other systems directly influences clinical decision-making, resource allocation, and service planning.
 
-1. **Data extraction**: Regular extraction of data from source systems
-2. **Data transformation**: Conversion to standardized formats
-3. **Data loading**: Integration into data warehouse structure
-4. **Quality validation**: Checks for completeness and accuracy
-5. **Master data management**: Maintenance of consistent reference data
+As healthcare continues to digitize, mastering these data flows will become increasingly important for healthcare professionals seeking to improve service delivery and patient outcomes through evidence-based decision-making.
 
-## Key Points for Guy's and St Thomas' Hospital Data Analysis
+## References
 
-1. **Hospital-Centric Data Collection**: The primary data sources are hospital clinical and administrative systems, with EPIC Electronic Health Record serving as the backbone of clinical data collection.
+* NHS Digital. (2023). Data sets. https://digital.nhs.uk/data-and-information/data-collections-and-data-sets/data-sets
 
-2. **Integrated Data Approach**: Data from various hospital systems is integrated through the data warehouse, enabling comprehensive analysis across clinical services.
+* NHS Data Dictionary. (2023). HODF Data Set. https://www.datadictionary.nhs.uk/data_sets/supporting_data_sets/hodf_data_set.html
 
-3. **Bi-Directional Data Flow**: While hospital systems generate data for national datasets, these national datasets also provide benchmarking information that flows back to guide hospital operations.
+* The Health Foundation. (2023). How better use of data can help address key challenges facing the NHS. https://www.health.org.uk/reports-and-analysis/briefings/how-better-use-of-data-can-help-address-key-challenges-facing-the
 
-4. **Multi-Purpose Data Usage**: The same source data serves multiple purposes, from direct patient care to operational management, research, and regulatory reporting.
+* The Lancet Digital Health. (2023). Mapping and evaluating national data flows: transparency, privacy, and guiding infrastructural transformation. https://www.sciencedirect.com/science/article/pii/S2589750023001577
 
-5. **Data Governance Framework**: Robust information governance processes ensure appropriate use of data while protecting patient confidentiality.
+* UK Data Service. (2023). Hospital Episode Statistics User Guide. https://doc.ukdataservice.ac.uk/doc/8681/mrdoc/pdf/nextsteps_hes_user_guide_v1.pdf
 
-6. **Supplementary Data Integration**: Hospital data is enhanced through integration with primary care, social care, and patient-generated information to provide a more complete picture of patient journeys.
-
-7. **Quality Improvement Focus**: Data collection and analysis are aligned with the hospital's commitment to service improvement and excellence in patient care.
-
-## Data Flow Implementation Challenges
-
-- **System interoperability**: Different hospital systems using varying standards and formats
-- **Data completeness**: Missing or incomplete data in source systems
-- **Timeliness of data**: Delays in data availability for real-time decision-making
-- **Skillset requirements**: Specialized expertise needed for complex data analysis
-- **Legacy systems**: Older systems with limited integration capabilities
-
-## Future Data Development Opportunities
-
-- **AI and predictive analytics**: Development of predictive models for clinical and operational use
-- **Real-time analytics**: Transition from retrospective to real-time data analysis
-- **Enhanced data visualization**: More sophisticated dashboards and visual analytics
-- **Patient-centered data integration**: Greater incorporation of patient-reported data
-- **Cross-organizational data sharing**: Enhanced data exchange with other regional providers
+* NHS Digital. (2023). An introduction to SNOMED. https://digital.nhs.uk/services/terminology-and-classifications/snomed-ct
