@@ -67,10 +67,8 @@ The Trust's rich data resources support clinical trials, health services researc
 graph TD
     subgraph "ORIGINAL DATA SOURCES"
         A1[EPIC Electronic Health Record] --> |Primary data capture| D[Data Warehousing - GDW]
-        A2[Administrative Systems/PAS] --> |Demographic & scheduling data| D
-        A3[Radiology Information System] --> |Imaging requests & reports| D
-        A4[Pathology Systems] --> |Test results| D
-        A5[Theatre & Procedure Systems] --> |Surgical data| D
+        A2[Sectra Picture Archiving and Communication System (PACS)] --> |Radiology images| D
+        A3[Synnovis Pathology Systems] --> |Test results| D
     end
 
     subgraph "DATA INTEGRATION PROCESSES"
