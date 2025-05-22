@@ -13,18 +13,20 @@ I am a Clinical Informatics trainee within the [Clinical Scientific Computing](h
 
 As part of my training, I am developing skills and gaining experience in:
 
+- Software development and programming
+- Maintenance of clinical software
 - Medical software and AI development
   - Clinical validation and deployment of AI
   - AI model training for medical imaging
+    
+- Clinical system integration and connectivity
+- Policy and regulation around clinical data usage
 - Clinical decision support systems
+  
 - Data science and analytics
   - Business intelligence in healthcare
   - Data curation and management
-- Clinical system integration and connectivity
-- Software development and programming
-- Maintenance of clinical software
-- Policy and regulation around clinical data usage
-- Hospital data utilisation across various domains
+  - Hospital data utilisation across various domains
 
 ## Programme Structure
 
