@@ -73,3 +73,6 @@ As part of the core module S-C1, trainees complete the following Direct Training
 20. Support the adoption of a new working method
 
 This role offers a unique opportunity to contribute to the advancement of healthcare through the application of cutting-edge technologies and data science methodologies.
+
+## FYA Revision
+[FYA Keyword Reference](https://estyli.github.io/Clinical-Informatics/fya_keywords.html)
