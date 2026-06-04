@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="STP Clinical Informatics FYA keyword reference">
+<title>FYA Keywords — Clinical Informatics STP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --surface2: #f0efe9;
+  --border: rgba(0,0,0,0.1);
+  --border2: rgba(0,0,0,0.18);
+  --text: #1a1917;
+  --muted: #6b6960;
+  --hint: #9e9d96;
+  --radius: 10px;
+  --prof: #4a3fa0; --prof-bg: #eeecfd;
+  --ds: #0f6e56; --ds-bg: #e1f5ee;
+  --sys: #1557a0; --sys-bg: #e6f0fb;
+  --pol: #7a4a0a; --pol-bg: #faeeda;
+  --dh: #7a2510; --dh-bg: #faece7;
+  --ai: #7a2040; --ai-bg: #fbeaf0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #181714;
+    --surface: #222120;
+    --surface2: #2a2927;
+    --border: rgba(255,255,255,0.1);
+    --border2: rgba(255,255,255,0.18);
+    --text: #f0efe9;
+    --muted: #a8a79f;
+    --hint: #6b6960;
+    --prof: #b0a8f0; --prof-bg: #2a2660;
+    --ds: #5dcaa5; --ds-bg: #0a3028;
+    --sys: #7ab8f0; --sys-bg: #0a2440;
+    --pol: #f0b860; --pol-bg: #3a2808;
+    --dh: #f08870; --dh-bg: #3a1408;
+    --ai: #f090b0; --ai-bg: #3a0e22;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{font-size:16px}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:2rem}
+
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 1rem 0;position:sticky;top:0;z-index:100}
+.header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.header-top h1{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.count-badge{font-family:'DM Mono',monospace;font-size:11px;background:var(--surface2);color:var(--hint);padding:3px 8px;border-radius:20px;border:1px solid var(--border)}
+
+.search-wrap{position:relative;margin-bottom:.75rem}
+.search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--hint);fill:none;stroke-width:2;stroke-linecap:round}
+#q{width:100%;padding:10px 12px 10px 36px;font-family:'DM Sans',sans-serif;font-size:16px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);outline:none;-webkit-appearance:none}
+#q:focus{border-color:var(--border2)}
+#q::placeholder{color:var(--hint)}
+
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:.75rem;scrollbar-width:none;-ms-overflow-style:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex-shrink:0;font-size:12px;font-weight:500;padding:6px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface2);color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .15s}
+.chip.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+
+main{padding:1rem}
+.section{margin-bottom:1.5rem}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--hint);margin-bottom:.5rem;display:flex;align-items:center;gap:8px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.cards{display:grid;grid-template-columns:1fr;gap:8px}
+@media(min-width:540px){.cards{grid-template-columns:1fr 1fr}}
+@media(min-width:820px){.cards{grid-template-columns:1fr 1fr 1fr}}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;display:flex;flex-direction:column;gap:4px;cursor:default;transition:border-color .15s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.card.m-prof::before{background:var(--prof)}.card.m-ds::before{background:var(--ds)}.card.m-sys::before{background:var(--sys)}.card.m-pol::before{background:var(--pol)}.card.m-dh::before{background:var(--dh)}.card.m-ai::before{background:var(--ai)}
+.card:active{border-color:var(--border2)}
+.term{font-size:14px;font-weight:600;color:var(--text);line-height:1.3}
+.def{font-size:13px;color:var(--muted);line-height:1.5}
+.tag{align-self:flex-start;margin-top:2px;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;font-family:'DM Mono',monospace;letter-spacing:.03em}
+.tag.m-prof{background:var(--prof-bg);color:var(--prof)}.tag.m-ds{background:var(--ds-bg);color:var(--ds)}.tag.m-sys{background:var(--sys-bg);color:var(--sys)}.tag.m-pol{background:var(--pol-bg);color:var(--pol)}.tag.m-dh{background:var(--dh-bg);color:var(--dh)}.tag.m-ai{background:var(--ai-bg);color:var(--ai)}
+
+.empty{text-align:center;padding:3rem 1rem;color:var(--hint);font-size:14px}
+.empty span{font-size:2rem;display:block;margin-bottom:.5rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-top">
+    <h1>FYA Keywords</h1>
+    <span class="count-badge" id="countbadge">— terms</span>
+  </div>
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" id="q" placeholder="Search terms or definitions…" autocomplete="off" autocorrect="off" spellcheck="false">
+  </div>
+  <div class="chips" id="chips"></div>
+</header>
+<main id="out"></main>
+
+<script>
+const MODULES=[
+  {id:"prof",label:"Professional Foundations"},
+  {id:"ds",label:"Data Science"},
+  {id:"sys",label:"Systems Dev"},
+  {id:"pol",label:"Policy & Strategy"},
+  {id:"dh",label:"Digital Health"},
+  {id:"ai",label:"AI"},
+];
+const TERMS=[
+  {m:"prof",t:"Duty of candour",d:"Legal obligation to be open and honest when things go wrong"},
+  {m:"prof",t:"Duty of care",d:"Responsibility to avoid acts/omissions that could cause reasonably foreseeable harm"},
+  {m:"prof",t:"HCPC Standards of Proficiency",d:"Regulatory threshold competencies required for Clinical Scientist registration"},
+  {m:"prof",t:"Scope of practice",d:"Boundaries of what you are trained and competent to do"},
+  {m:"prof",t:"Fitness to practise",d:"Meeting the standards needed to be a safe and effective professional"},
+  {m:"prof",t:"Informed consent",d:"Patient agreement to care/research after receiving sufficient information to decide freely"},
+  {m:"prof",t:"Confidentiality",d:"Obligation to protect patient information; shared only on a need-to-know basis"},
+  {m:"prof",t:"Caldicott Principles",d:"Seven (now eight) principles governing NHS use of patient-identifiable data"},
+  {m:"prof",t:"Protected characteristics",d:"Nine characteristics (e.g. age, race, disability) protected under Equality Act 2010"},
+  {m:"prof",t:"Unconscious bias",d:"Automatic, unintended prejudices affecting decisions without awareness"},
+  {m:"prof",t:"Reflective practice",d:"Structured thinking about experience to improve future performance (e.g. Gibbs cycle)"},
+  {m:"prof",t:"CPD",d:"Ongoing learning and development to maintain and improve professional competence"},
+  {m:"prof",t:"NHS Constitution",d:"Document setting out rights and responsibilities for staff, patients, and the public"},
+  {m:"prof",t:"NHS CARE values",d:"Compassion, Respect, Everyone counts — core values underpinning NHS culture"},
+  {m:"prof",t:"Safeguarding",d:"Protecting vulnerable people (children, adults at risk) from abuse or neglect"},
+  {m:"prof",t:"Audit cycle",d:"Measure → compare to standard → implement change → re-measure loop for quality"},
+  {m:"prof",t:"PDSA cycle",d:"Plan-Do-Study-Act; iterative QI methodology for testing change ideas"},
+  {m:"prof",t:"Risk management",d:"Identifying, assessing, and mitigating hazards to patients, staff, and systems"},
+  {m:"prof",t:"Governance",d:"Frameworks and accountability structures ensuring safe, effective, and accountable care"},
+  {m:"prof",t:"Clinical governance",d:"NHS system by which trusts are accountable for quality and safety of clinical services"},
+  {m:"prof",t:"Patient autonomy",d:"Right of patients to make informed decisions about their own care"},
+  {m:"prof",t:"Equality Act 2010",d:"UK law prohibiting discrimination against people with protected characteristics"},
+  {m:"prof",t:"Multi-professional working",d:"Different health professions collaborating around a patient, each contributing expertise"},
+  {m:"prof",t:"Health inequalities",d:"Avoidable, unfair differences in health outcomes across population groups"},
+  {m:"prof",t:"Social determinants of health",d:"Non-medical factors (housing, income, education) shaping health outcomes"},
+  {m:"prof",t:"Change management",d:"Structured approach to transitioning individuals/teams/organisations to a desired state"},
+  {m:"prof",t:"Kotter's 8-step model",d:"Leading change framework: urgency → coalition → vision → communicate → empower etc."},
+  {m:"prof",t:"Lean / Six Sigma",d:"Process improvement methods: Lean removes waste; Six Sigma reduces variation"},
+  {m:"prof",t:"ISO 13485",d:"Quality management standard for medical device design and manufacture"},
+  {m:"ds",t:"Data wrangling",d:"Cleaning and reshaping raw data into an analysis-ready format"},
+  {m:"ds",t:"Reproducible research",d:"Sharing code, data, and methods so others can verify and replicate findings"},
+  {m:"ds",t:"Hypothesis testing",d:"Statistical procedure to decide whether data support a claim about a population"},
+  {m:"ds",t:"p-value",d:"Probability of observing results as extreme as seen, assuming the null hypothesis is true"},
+  {m:"ds",t:"Confidence interval",d:"Range of values likely to contain the true population parameter with a stated probability"},
+  {m:"ds",t:"Regression modelling",d:"Statistical method to quantify relationships between outcome and predictor variables"},
+  {m:"ds",t:"Confounding",d:"Variable associated with both exposure and outcome, distorting the apparent relationship"},
+  {m:"ds",t:"Bias (statistical)",d:"Systematic error skewing results away from the true value"},
+  {m:"ds",t:"Causal inference",d:"Estimating the effect of an intervention, ruling out confounding/reverse causation"},
+  {m:"ds",t:"Descriptive analysis",d:"Summarising what is in a dataset (counts, means, distributions)"},
+  {m:"ds",t:"Predictive modelling",d:"Using historical data to forecast future outcomes"},
+  {m:"ds",t:"Data linkage",d:"Joining records from different datasets to follow patients across settings"},
+  {m:"ds",t:"Data governance",d:"Policies and processes for managing data quality, access, and use"},
+  {m:"ds",t:"UK GDPR / DPA 2018",d:"Legal framework for data protection; lawful bases, rights of data subjects"},
+  {m:"ds",t:"Pseudonymisation",d:"Replacing direct identifiers with codes; data still personal but less identifiable"},
+  {m:"ds",t:"Anonymisation",d:"Processing data so individuals cannot be identified; outside GDPR scope"},
+  {m:"ds",t:"Statistical analysis plan",d:"Pre-specified document describing the analysis before data are examined"},
+  {m:"ds",t:"Data visualisation",d:"Graphical representation of data to communicate patterns clearly to an audience"},
+  {m:"ds",t:"Version control (Git)",d:"Tracking changes to code over time; enables collaboration and rollback"},
+  {m:"sys",t:"Agile methodology",d:"Iterative development with short sprints, continuous feedback, and flexible scope"},
+  {m:"sys",t:"Waterfall methodology",d:"Sequential, phase-gated development; requirements fixed upfront"},
+  {m:"sys",t:"Requirements gathering",d:"Eliciting and documenting what a system must do (functional) and how (non-functional)"},
+  {m:"sys",t:"User story",d:"Short statement describing a feature from a user perspective: 'As a… I want…'"},
+  {m:"sys",t:"Acceptance criteria",d:"Conditions a system must satisfy for a user story/requirement to be accepted"},
+  {m:"sys",t:"System testing",d:"Evaluating whether an entire system meets its specified requirements"},
+  {m:"sys",t:"UAT",d:"User Acceptance Testing; end-users verify the system does what they need"},
+  {m:"sys",t:"HL7 / FHIR",d:"Healthcare interoperability standards enabling systems to exchange clinical data"},
+  {m:"sys",t:"DICOM",d:"Standard for storing and transmitting medical imaging data"},
+  {m:"sys",t:"Interoperability",d:"Ability of different systems to exchange and use information seamlessly"},
+  {m:"sys",t:"Enterprise architecture",d:"High-level design of an organisation's IT systems, data, and processes"},
+  {m:"sys",t:"Procurement (public sector)",d:"Legal process for buying goods/services; governed by PCR 2015 / NHS Act 2022"},
+  {m:"sys",t:"Risk register",d:"Document tracking identified risks, likelihood, impact, and mitigations"},
+  {m:"sys",t:"Business case",d:"Justification for a project including costs, benefits, risks, and alternatives"},
+  {m:"sys",t:"PRINCE2 / MSP",d:"Structured project and programme management frameworks used across NHS"},
+  {m:"pol",t:"NHS Long Term Plan",d:"10-year strategic plan for NHS transformation published in 2019"},
+  {m:"pol",t:"10 Year Health Plan",d:"2024 government strategy for reforming NHS delivery and workforce"},
+  {m:"pol",t:"NICE guidelines",d:"Evidence-based guidance on clinical practice and health technology appraisal"},
+  {m:"pol",t:"Digital maturity index",d:"NHS measure of how advanced trusts are in adopting digital tools"},
+  {m:"pol",t:"ICS (Integrated Care System)",d:"NHS and social care organisations in a region working together as one system"},
+  {m:"pol",t:"KPIs",d:"Key Performance Indicators — quantifiable measures of progress toward objectives"},
+  {m:"pol",t:"PESTLE analysis",d:"Framework scanning: Political, Economic, Social, Technical, Legal, Environmental"},
+  {m:"pol",t:"SWOT analysis",d:"Internal strengths/weaknesses and external opportunities/threats analysis"},
+  {m:"pol",t:"Stakeholder mapping",d:"Identifying who has interest or influence over a project; plotting power vs interest"},
+  {m:"pol",t:"Systems thinking",d:"Understanding a problem by examining the whole system, not just individual parts"},
+  {m:"pol",t:"Logic model",d:"Visual map of inputs → activities → outputs → outcomes → impact"},
+  {m:"pol",t:"Policy implementation gap",d:"Difference between what policy intends and what actually happens in practice"},
+  {m:"pol",t:"Value-based healthcare",d:"Organising care to maximise patient outcomes per pound spent"},
+  {m:"pol",t:"DSPT",d:"Data Security and Protection Toolkit — NHS annual self-assessment of data security"},
+  {m:"pol",t:"DTAC",d:"Digital Technology Assessment Criteria — NHS framework for evaluating digital health tools"},
+  {m:"dh",t:"Clinical Decision Support (CDS)",d:"Tools providing clinicians with knowledge and patient-specific information at point of care"},
+  {m:"dh",t:"SaMD",d:"Software as a Medical Device — software performing a medical purpose; regulated"},
+  {m:"dh",t:"UK MDR 2002 / 2024",d:"UK Medical Devices Regulations governing classification, safety, and market placement"},
+  {m:"dh",t:"Post-market surveillance",d:"Ongoing monitoring of a device's safety and performance after release"},
+  {m:"dh",t:"CE / UKCA marking",d:"Conformity marks showing a device meets EU / UK safety and performance requirements"},
+  {m:"dh",t:"Automation bias",d:"Over-reliance on automated recommendations, even when they are wrong"},
+  {m:"dh",t:"Alert fatigue",d:"Desensitisation to warnings due to high volume of false-positive alerts"},
+  {m:"dh",t:"NASSS framework",d:"Framework for assessing complexity in digital health implementation (Greenhalgh)"},
+  {m:"dh",t:"Computable knowledge",d:"Clinical knowledge encoded in machine-readable form (e.g. SNOMED CT, CDS hooks)"},
+  {m:"dh",t:"Implementation science",d:"Study of methods to promote adoption of evidence-based practices into routine care"},
+  {m:"dh",t:"Technology adoption model",d:"Framework (e.g. TAM, NPT) explaining uptake of new technologies"},
+  {m:"dh",t:"Clinical safety (DCB0129/0160)",d:"NHS standards requiring hazard analysis for health IT during development and deployment"},
+  {m:"dh",t:"Pharmacogenomics",d:"How genes affect drug response; enables personalised prescribing decisions"},
+  {m:"ai",t:"Supervised learning",d:"ML trained on labelled input-output pairs to predict outputs for new inputs"},
+  {m:"ai",t:"Unsupervised learning",d:"ML finding hidden patterns in unlabelled data (clustering, dimensionality reduction)"},
+  {m:"ai",t:"Sensitivity / recall",d:"Proportion of true positives correctly identified; important for screening tools"},
+  {m:"ai",t:"Specificity",d:"Proportion of true negatives correctly identified; important for ruling out disease"},
+  {m:"ai",t:"PPV / NPV",d:"Positive/Negative Predictive Value — depends on prevalence; critical for clinical use"},
+  {m:"ai",t:"AUC-ROC",d:"Area under the ROC curve; single-number summary of classifier discrimination"},
+  {m:"ai",t:"Overfitting",d:"Model learns training data too well; performs poorly on unseen data"},
+  {m:"ai",t:"Validation (external)",d:"Testing model performance on data from a different site/time than training data"},
+  {m:"ai",t:"Algorithmic bias",d:"Systematic error in model outputs due to biased training data or design choices"},
+  {m:"ai",t:"Fairness metrics",d:"Quantitative measures of whether model performance is equitable across subgroups"},
+  {m:"ai",t:"Explainability / XAI",d:"Methods making AI decisions interpretable to clinicians and patients"},
+  {m:"ai",t:"MHRA AI guidance",d:"UK regulator's framework for AI as a medical device; transparency, post-market monitoring"},
+  {m:"ai",t:"TRIPOD / PROBAST",d:"Reporting and risk-of-bias standards for prediction model studies"},
+  {m:"ai",t:"Transfer learning",d:"Using a model trained on one task as a starting point for a related task"},
+  {m:"ai",t:"Convolutional neural network",d:"Deep learning architecture particularly effective for image analysis tasks"},
+  {m:"ai",t:"Natural language processing",d:"AI techniques for understanding and generating human language from text or speech"},
+  {m:"ai",t:"Dimensionality reduction (PCA)",d:"Techniques to reduce variables while retaining most variance in the data"},
+  {m:"ai",t:"Calibration",d:"Degree to which predicted probabilities match actual observed frequencies"},
+  {m:"ai",t:"Data leakage",d:"When information from outside training set contaminates model, inflating performance"},
+];
+
+let active=null;
+function render(){
+  const q=(document.getElementById('q').value||'').toLowerCase().trim();
+  const groups={};
+  MODULES.forEach(m=>groups[m.id]=[]);
+  TERMS.forEach(item=>{
+    if(active&&item.m!==active)return;
+    if(q&&!item.t.toLowerCase().includes(q)&&!item.d.toLowerCase().includes(q))return;
+    groups[item.m].push(item);
+  });
+  let html='';
+  let total=0;
+  MODULES.forEach(mod=>{
+    const cards=groups[mod.id];
+    if(!cards||!cards.length)return;
+    total+=cards.length;
+    html+=`<section class="section"><div class="section-label">${mod.label}</div><div class="cards">`;
+    cards.forEach(c=>{
+      html+=`<div class="card m-${c.m}"><div class="term">${highlight(c.t,q)}</div><div class="def">${highlight(c.d,q)}</div><span class="tag m-${c.m}">${mod.label}</span></div>`;
+    });
+    html+='</div></section>';
+  });
+  if(!total)html=`<div class="empty"><span>🔍</span>No terms match "${document.getElementById('q').value}"</div>`;
+  document.getElementById('out').innerHTML=html;
+  document.getElementById('countbadge').textContent=total+' term'+(total===1?'':'s');
+}
+function highlight(text,q){
+  if(!q)return text;
+  const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+  return text.replace(re,'<mark style="background:rgba(255,200,0,0.35);border-radius:2px;padding:0 1px">$1</mark>');
+}
+function buildChips(){
+  const row=document.getElementById('chips');
+  const all=document.createElement('button');
+  all.className='chip active';all.textContent='All';
+  all.onclick=()=>{active=null;document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));all.classList.add('active');render()};
+  row.appendChild(all);
+  MODULES.forEach(mod=>{
+    const c=document.createElement('button');
+    c.className='chip';c.textContent=mod.label;
+    c.onclick=()=>{
+      active=active===mod.id?null:mod.id;
+      document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+      if(active){c.classList.add('active');}else{all.classList.add('active');}
+      render();
+    };
+    row.appendChild(c);
+  });
+}
+document.getElementById('q').addEventListener('input',render);
+buildChips();render();
+</script>
+</body>
+</html>
