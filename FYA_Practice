@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FYA Practice Stations — Clinical Informatics STP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f6f2;--surface:#fff;--surface2:#f0efe9;--surface3:#e8e7e0;
+  --border:rgba(0,0,0,0.09);--border2:rgba(0,0,0,0.18);
+  --text:#1a1917;--muted:#5c5b53;--hint:#9e9d96;
+  --radius:10px;--radius-lg:14px;
+  --reading:#185FA5;--reading-bg:#E6F1FB;
+  --station:#0F6E56;--station-bg:#E1F5EE;
+  --warn:#BA7517;--danger:#A32D2D;
+  --prof:#4a3fa0;--prof-bg:#eeecfd;
+  --ds:#0f6e56;--ds-bg:#e1f5ee;
+  --sys:#1557a0;--sys-bg:#e6f0fb;
+  --pol:#7a4a0a;--pol-bg:#faeeda;
+  --dh:#7a2510;--dh-bg:#faece7;
+  --ai:#7a2040;--ai-bg:#fbeaf0;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#181714;--surface:#222120;--surface2:#2a2927;--surface3:#333230;
+    --border:rgba(255,255,255,0.09);--border2:rgba(255,255,255,0.2);
+    --text:#f0efe9;--muted:#a8a79f;--hint:#6b6960;
+    --reading:#7ab8f0;--reading-bg:#0a2440;
+    --station:#5dcaa5;--station-bg:#0a3028;
+    --warn:#f0b860;--danger:#f08070;
+    --prof:#b0a8f0;--prof-bg:#2a2660;
+    --ds:#5dcaa5;--ds-bg:#0a3028;
+    --sys:#7ab8f0;--sys-bg:#0a2440;
+    --pol:#f0b860;--pol-bg:#3a2808;
+    --dh:#f08870;--dh-bg:#3a1408;
+    --ai:#f090b0;--ai-bg:#3a0e22;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:4rem}
+
+/* ── NAV ── */
+nav{background:var(--surface);border-bottom:1px solid var(--border);padding:.75rem 1rem;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-title{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--hint);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.nav-progress{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.done-badge{font-family:'DM Mono',monospace;font-size:12px;background:var(--surface2);color:var(--hint);padding:3px 10px;border-radius:20px;border:1px solid var(--border)}
+.nav-home-btn{font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
+.nav-home-btn:hover{background:var(--surface2)}
+
+/* ── VIEWS ── */
+.view{display:none;max-width:700px;margin:0 auto;padding:1.25rem 1rem}
+.view.active{display:block}
+
+/* ── HOME ── */
+.hero{margin-bottom:1.25rem}
+.hero-title{font-size:22px;font-weight:500;color:var(--text);margin-bottom:.4rem;line-height:1.3}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.6}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:1.25rem}
+.meta-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem;text-align:center}
+.meta-label{font-size:11px;color:var(--hint);margin-bottom:4px;font-family:'DM Mono',monospace;letter-spacing:.04em}
+.meta-val{font-size:20px;font-weight:500;color:var(--text)}
+
+.filter-row{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:.75rem;scrollbar-width:none}
+.filter-row::-webkit-scrollbar{display:none}
+.fchip{flex-shrink:0;font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface2);color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'DM Sans',sans-serif}
+.fchip.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+
+.sc-list{display:flex;flex-direction:column;gap:8px}
+.sc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem;cursor:pointer;transition:border-color .15s;display:flex;align-items:flex-start;gap:12px}
+.sc-card:hover{border-color:var(--border2)}
+.sc-card.hidden{display:none}
+.sc-num{width:32px;height:32px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--muted);flex-shrink:0;transition:all .15s}
+.sc-num.done{background:var(--station-bg);color:var(--station)}
+.sc-body{flex:1;min-width:0}
+.sc-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;line-height:1.3}
+.sc-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mod-tag{font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;font-family:'DM Mono',monospace;white-space:nowrap}
+.sc-note{font-size:11px;color:var(--hint)}
+.sc-arrow{color:var(--hint);font-size:16px;flex-shrink:0;align-self:center}
+
+/* ── STATION ── */
+.timer-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:.75rem}
+.timer-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.phase-pill{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;font-family:'DM Mono',monospace;letter-spacing:.04em}
+.phase-pill.reading{background:var(--reading-bg);color:var(--reading)}
+.phase-pill.station{background:var(--station-bg);color:var(--station)}
+.timer-digits{font-family:'DM Mono',monospace;font-size:28px;font-weight:500;color:var(--text);letter-spacing:.05em;transition:color .3s}
+.timer-digits.warn{color:var(--warn)}
+.timer-digits.danger{color:var(--danger)}
+.progress-track{width:100%;height:3px;background:var(--surface3);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;border-radius:2px;transition:width .8s linear,background .3s}
+.progress-fill.reading{background:var(--reading)}
+.progress-fill.station{background:var(--station)}
+.progress-fill.warn{background:var(--warn)}
+.progress-fill.danger{background:var(--danger)}
+
+.phase-note{font-size:13px;color:var(--muted);background:var(--surface2);border-radius:var(--radius);padding:.6rem .9rem;margin-bottom:.75rem;line-height:1.5;border-left:2px solid var(--border2)}
+
+.scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:.75rem}
+.scenario-eyebrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.scenario-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--hint);letter-spacing:.07em;text-transform:uppercase}
+.scenario-text{font-size:14px;line-height:1.75;color:var(--text)}
+
+.qs-card{background:var(--surface2);border-radius:var(--radius);padding:1rem;margin-bottom:.75rem}
+.qs-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--hint);letter-spacing:.07em;text-transform:uppercase;margin-bottom:.6rem}
+.q-item{font-size:14px;color:var(--text);line-height:1.65;display:flex;gap:.6rem;margin-bottom:.5rem}
+.q-item:last-child{margin-bottom:0}
+.q-n{font-family:'DM Mono',monospace;font-size:12px;color:var(--hint);flex-shrink:0;padding-top:2px}
+
+.hints-row{margin-bottom:.75rem}
+.hints-toggle-btn{font-size:12px;color:var(--hint);background:transparent;border:none;cursor:pointer;padding:0;font-family:'DM Sans',sans-serif;text-decoration:underline;text-underline-offset:3px}
+.hints-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.9rem;margin-top:.5rem;display:none}
+.hint-row{font-size:12px;color:var(--muted);line-height:1.6;padding:.2rem 0;padding-left:1.1rem;position:relative}
+.hint-row::before{content:"→";position:absolute;left:0;color:var(--hint);font-size:11px}
+
+.station-btns{display:flex;gap:8px}
+.btn{padding:10px 16px;font-size:14px;font-family:'DM Sans',sans-serif;border-radius:var(--radius);cursor:pointer;transition:all .15s;border:1px solid var(--border)}
+.btn-main{flex:1;font-weight:500;background:var(--surface);color:var(--text)}
+.btn-main:hover{background:var(--surface2)}
+.btn-leave{background:transparent;color:var(--muted);font-size:13px}
+.btn-leave:hover{border-color:var(--border2);color:var(--text)}
+
+/* ── REVIEW ── */
+.review-header{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:.75rem}
+.review-title{font-size:18px;font-weight:500;margin-bottom:.3rem}
+.review-sub{font-size:13px;color:var(--muted)}
+.model-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:.75rem}
+.model-heading{font-size:13px;font-weight:500;color:var(--text);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.model-heading::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--station);flex-shrink:0}
+.model-body{font-size:13px;color:var(--muted);line-height:1.75}
+.review-btns{display:flex;gap:8px}
+.btn-next{flex:1;font-weight:500;background:var(--text);color:var(--bg);border-color:var(--text)}
+.btn-next:hover{opacity:.85}
+.btn-home-r{background:transparent;color:var(--muted);font-size:13px}
+.btn-home-r:hover{border-color:var(--border2);color:var(--text)}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-title">FYA Practice Stations</span>
+  <div class="nav-progress">
+    <span class="done-badge" id="doneBadge">0 / 13 done</span>
+    <button class="nav-home-btn" id="navHomeBtn" onclick="goHome()">← Home</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div class="view active" id="homeView">
+  <div class="hero">
+    <div class="hero-title">Practice stations</div>
+    <div class="hero-sub">13 scenarios across all 6 modules. Each station: 3 min reading, 9 min answering — matching the real FYA format. Select any scenario to begin.</div>
+  </div>
+  <div class="meta-grid">
+    <div class="meta-card"><div class="meta-label">Scenarios</div><div class="meta-val">13</div></div>
+    <div class="meta-card"><div class="meta-label">Reading</div><div class="meta-val">3 min</div></div>
+    <div class="meta-card"><div class="meta-label">Station</div><div class="meta-val">9 min</div></div>
+  </div>
+  <div class="filter-row" id="filterRow"></div>
+  <div class="sc-list" id="scList"></div>
+</div>
+
+<!-- STATION -->
+<div class="view" id="stationView">
+  <div class="timer-bar">
+    <div class="timer-row">
+      <span class="phase-pill reading" id="phasePill">Reading</span>
+      <span class="timer-digits" id="timerDigits">3:00</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill reading" id="progressFill" style="width:100%"></div></div>
+  </div>
+  <div class="phase-note" id="phaseNote"></div>
+  <div class="scenario-card">
+    <div class="scenario-eyebrow">
+      <span class="scenario-label">Scenario <span id="scNumLabel"></span> of 13</span>
+      <span class="mod-tag" id="scModTag"></span>
+    </div>
+    <div class="scenario-text" id="scText"></div>
+  </div>
+  <div class="qs-card">
+    <div class="qs-label">Questions</div>
+    <div id="qItems"></div>
+  </div>
+  <div class="hints-row">
+    <button class="hints-toggle-btn" id="hintsToggleBtn" onclick="toggleHints()">Show curriculum pointers ↓</button>
+    <div class="hints-panel" id="hintsPanel"></div>
+  </div>
+  <div class="station-btns">
+    <button class="btn btn-main" id="mainBtn" onclick="handleMainBtn()">Start station</button>
+    <button class="btn btn-leave" onclick="goHome()">Leave station</button>
+  </div>
+</div>
+
+<!-- REVIEW -->
+<div class="view" id="reviewView">
+  <div class="review-header">
+    <div class="review-title" id="reviewTitle"></div>
+    <div class="review-sub" id="reviewSub"></div>
+  </div>
+  <div id="modelSections"></div>
+  <div class="review-btns">
+    <button class="btn btn-next" id="nextBtn" onclick="nextScenario()">Next scenario →</button>
+    <button class="btn btn-home-r" onclick="goHome()">← Home</button>
+  </div>
+</div>
+
+<script>
+const MOD_STYLES={
+  "Professional Foundations":"prof",
+  "Data Science & Engineering":"ds",
+  "Systems Development":"sys",
+  "Policy & Strategy":"pol",
+  "Digital Health & CDS":"dh",
+  "Artificial Intelligence":"ai"
+};
+
+const SCENARIOS=[
+  {
+    module:"Professional Foundations",
+    title:"A colleague raises a patient safety concern",
+    tip:"Shortlisted by trainee above",
+    text:"You are a newly registered Clinical Scientist in a Clinical Informatics team. During a team meeting, a junior colleague tells you privately that she has noticed a recurring data entry error in the EPR system causing patients to receive incorrect medication dose alerts. She is worried about raising it formally because her previous manager dismissed similar concerns. She asks for your advice.",
+    qs:["What are your professional and ethical obligations in this situation, and how would you advise your colleague?","What processes and structures exist within the NHS to support the raising of patient safety concerns?"],
+    hints:["Duty of candour (Regulation 20) — statutory, organisational and professional obligation","HCPC Standards of Conduct 7: raise concerns about safety — not optional","Freedom to Speak Up Guardians: statutory role post-Francis Report 2013","LFPSE (Learning from Patient Safety Events): replaced STEIS for NHS England","PSIRF 2022 (Patient Safety Incident Response Framework): proportionate investigation","Psychological safety and organisational culture","Your scope of practice: escalate, don't investigate alone"],
+    model:[
+      {h:"Professional obligations",b:"As a registered Clinical Scientist, HCPC Standards of Conduct Standard 7 places a clear obligation to raise and act on concerns about safety — this is not discretionary. I would explain this to my colleague and reassure her that raising this concern is both her right and her professional duty."},
+      {h:"Immediate steps",b:"I would advise her to document what she has observed with specific dates and episode references where possible — factually and without speculation. Contemporaneous records are important if the concern is later investigated. I would offer to support her rather than asking her to act alone."},
+      {h:"Escalation pathways",b:"The incident should be logged on the trust's LFPSE system. If she has concerns about departmental culture preventing escalation, she can approach the Freedom to Speak Up Guardian — a statutory, independent and confidential role. She is legally protected from detriment under the Public Interest Disclosure Act 1998."},
+      {h:"Clinical governance structures",b:"The trust's clinical governance framework — risk management, incident review, and the PSIRF — exists precisely for this situation. The Clinical Informatics team lead and Caldicott Guardian should be informed if patient-identifiable data has been compromised. The error may require root cause analysis and a CAPA process under the team's QMS."},
+      {h:"Culture",b:"I would validate my colleague's concern and acknowledge the psychological safety dimension. The NHS People Promise and NHS Constitution both commit to an environment where staff can raise concerns without fear of reprisal."}
+    ]
+  },
+  {
+    module:"Digital Health & CDS",
+    title:"Deploying an AI triage tool in the ED",
+    text:"Your trust is planning to deploy an AI-based triage decision support tool in the Emergency Department. The tool was developed by a private company and uses historical ED attendance data to predict patient acuity and recommend triage categories. The Head of Emergency Medicine has asked your Clinical Informatics team to lead the evaluation and governance sign-off process before go-live.",
+    qs:["What evaluation and governance processes would you apply before recommending the tool for deployment?","What specific risks would you want to assess, and how would you monitor the tool's performance after go-live?"],
+    hints:["SaMD: likely Class IIa under UK MDR 2002 — requires UKCA marking and technical file","DTAC: six domains — clinical safety, data protection, technical security, interoperability, usability, equality","DCB0129 (manufacturer) and DCB0160 (deployment) clinical safety standards","NICE Evidence Standards Framework for DHTs: Tier C evidence for clinical pathway tools","Algorithmic bias: historical ED data may under-represent certain demographics","Automation bias: clinicians over-rely on output under pressure","Post-market surveillance: monitor for model drift, subgroup performance","Alert fatigue if tool generates frequent low-confidence outputs"],
+    model:[
+      {h:"Regulatory status",b:"The tool performs a medical purpose and is therefore Software as a Medical Device (SaMD) under UK MDR 2002, likely Class IIa or higher. I would request the manufacturer's technical file, Declaration of Conformity, and UKCA marking documentation before any further evaluation."},
+      {h:"Clinical safety standards",b:"DCB0129 (manufacturer clinical risk) and DCB0160 (deployment clinical risk management) must both be met. I would work with our Clinical Safety Officer to complete a deployment hazard assessment and safety case report before go-live."},
+      {h:"DTAC assessment",b:"I would conduct a DTAC review across all six domains: clinical safety, data protection, technical security, interoperability with our EPR, usability/accessibility, and equality and inclusion. Any gaps must be resolved prior to deployment."},
+      {h:"Evidence appraisal",b:"I would review validation evidence against the NICE Evidence Standards Framework for DHTs. For a tool influencing clinical pathways I would want Tier C evidence — patient outcome benefit — and check whether validation was performed in a comparable NHS ED population."},
+      {h:"Bias and fairness",b:"Historical ED triage data may encode systematic biases. I would audit performance across age, sex, ethnicity, and deprivation before go-live."},
+      {h:"Post-market surveillance",b:"After deployment I would establish a monitoring dashboard: triage accuracy vs outcome, override rates (high rates may indicate automation bias), subgroup performance, and model drift over time. Pre-defined thresholds would trigger formal review or suspension."}
+    ]
+  },
+  {
+    module:"Data Science & Engineering",
+    title:"A data breach in a research project",
+    text:"You are a Clinical Informatician on a population cohort study linking primary and secondary care data. During a routine review you discover that a dataset containing NHS numbers, dates of birth, and GP practice codes has been shared with an external academic partner without a data sharing agreement in place, contrary to the project's information governance approvals.",
+    qs:["What are your immediate obligations under data protection law and NHS information governance frameworks?","What steps would you take to manage and learn from this incident?"],
+    hints:["UK GDPR Article 33: notify ICO within 72 hours if breach likely to result in risk to individuals","UK GDPR Article 34: notify affected individuals if high risk","NHS numbers + DoB = personal data; likely special category health data","Caldicott Principles 1, 2, 6: justified purpose, minimum necessary, comply with law","DSPT: breaches must be reported and documented","Data Controller vs Data Processor: who bears responsibility?","Root cause analysis and CAPA to prevent recurrence","Research Ethics Committee: may need to be informed"],
+    model:[
+      {h:"Immediate containment",b:"My first obligation is to contain the breach — contact the external partner immediately and request the data be quarantined and not further processed or shared. Simultaneously notify the Data Protection Officer (DPO) and Caldicott Guardian, as NHS numbers and dates of birth constitute patient-identifiable health data (special category under GDPR Article 9)."},
+      {h:"ICO notification",b:"Under UK GDPR Article 33, if the breach is likely to result in risk to individuals' rights and freedoms, the trust as Data Controller must notify the ICO within 72 hours of becoming aware. Notification must describe the nature of the breach, categories and approximate number of data subjects, likely consequences, and measures taken."},
+      {h:"Individual notification",b:"If the breach creates high risk to individuals — for example if the data could identify patients with stigmatised conditions — Article 34 requires direct notification to those affected. The DPO and Senior Information Risk Owner (SIRO) must make this decision with legal advice."},
+      {h:"Root cause and governance review",b:"A root cause analysis should identify why the data sharing agreement was missed. Was there a process gap, unclear responsibility, or inadequate training? Findings feed into a CAPA and update to the data management plan. The research sponsor and Research Ethics Committee should also be notified."},
+      {h:"Learning and prevention",b:"The incident is logged on the DSPT and in the trust's incident management system. Systemic preventive actions: mandatory data sharing agreement verification before any transfer, clearer escalation pathways for researchers, and refreshed IG training aligned with Caldicott Principles."}
+    ]
+  },
+  {
+    module:"Systems Development",
+    title:"An EPR implementation going off-track",
+    text:"Your NHS trust is 6 months into a 2-year EPR implementation. Reports from clinical departments show very low end-user engagement, clinical workflows have not been correctly mapped, and there are concerns that data migration from the legacy system contains errors affecting patient record accuracy. The Project Board has asked your team for a briefing on the issues and proposed actions.",
+    qs:["How would you diagnose and prioritise the problems in this implementation?","What approaches would you recommend to get it back on track?"],
+    hints:["Lessons from NPFIT: engagement failure and requirements drift are the most common causes of NHS IT project failure","Systems thinking: sociotechnical system — people, process, and technology together","Workflow mapping must precede system configuration, not follow it","Data migration: validation against source system, parallel running, sample-based audit","Change management: Kotter's 8 steps — is there coalition, urgency, communication?","PRINCE2: exception reporting, change control, updated risk register","Clinical champions programme for UAT","Patient safety: migration errors could cause direct harm — highest priority"],
+    model:[
+      {h:"Diagnosing the problems",b:"The issues fall into three categories: a people/engagement problem (insufficient clinical co-design), a process problem (workflows configured to an incorrect specification), and a data quality problem (migration errors that will persist into the new system). All three must be addressed in parallel, not sequence."},
+      {h:"Prioritisation: data migration",b:"Migration errors are the highest priority due to direct patient safety risk — incorrect historical records could lead to wrong clinical decisions. I would recommend pausing further migration until a systematic data quality assessment, including sample-based validation against source records, is complete."},
+      {h:"Clinical engagement",b:"I would establish or reinvigorate a clinical champions programme with engaged clinicians in each specialty. Workflow mapping workshops — led by clinical staff, not just observed by IT — should be run before any reconfiguration. UAT scripts should be co-designed with clinical users."},
+      {h:"Change management",b:"Using Kotter's framework: I would assess whether there is sufficient urgency, executive-level sponsorship visible to frontline staff, a clear vision of what the EPR will enable, and quick wins to rebuild confidence. Communication failure is often as significant as technical failure."},
+      {h:"Governance escalation",b:"Under PRINCE2, the accumulation of issues — scope deviation, risk materialisation — must be escalated to the Project Board as an exception report. The risk register should be updated and change control applied before any timeline or scope changes are agreed."}
+    ]
+  },
+  {
+    module:"Policy & Strategy",
+    title:"Population health analytics dashboard for an ICB",
+    text:"Your Integrated Care Board wants to commission a population health analytics dashboard to identify patients at high risk of hospital admission so community teams can intervene proactively. The tool will use linked primary and secondary care data and be accessible to GPs, community nurses, and social care teams across the ICB footprint. Your Clinical Informatics team is leading development.",
+    qs:["What strategic and governance considerations must you address before development begins?","How would you ensure the tool does not exacerbate existing health inequalities?"],
+    hints:["ICS structure: ICB (NHS commissioning) and ICP (includes social care) — cross-boundary data sharing requires formal agreements","Data Saves Lives strategy: SDE principles, FDP for operational data","UK GDPR lawful basis: Article 6(1)(e) public task + Article 9(2)(h) for health data","Caldicott Principles: justified purpose, minimum necessary","DSPT current for all partner organisations","Health inequalities: Core20PLUS5 — target most deprived 20% and clinical priority areas","Algorithmic bias: under-served groups may have sparser data → underestimated risk","NASSS framework: assess complexity across seven domains before build","DTAC if algorithmic risk scores influence clinical decisions (SaMD boundary)"],
+    model:[
+      {h:"Strategic context",b:"This initiative sits within NHS England's 'hospital to community' shift and the Data Saves Lives strategy. The ICB has statutory population health responsibility under the Health and Care Act 2022. I would ensure clear strategic mandate, executive sponsorship from both NHS and local authority partners, and a shared vision agreed across organisational boundaries."},
+      {h:"Information governance",b:"Linking primary and secondary care data requires formal data sharing agreements between all organisations before any data flows. The lawful basis is likely Article 6(1)(e) public task with Article 9(2)(h) safeguards. The Caldicott Guardian must approve data uses, and DSPT must be current for all data-accessing organisations. SDE principles should apply — no bulk transfers, access within a controlled environment where possible."},
+      {h:"SaMD boundary",b:"If the dashboard includes an algorithmic risk score that clinicians use to prioritise patients, this may constitute SaMD under UK MDR 2002. I would seek MHRA guidance and, if SaMD classification applies, complete DTAC assessment and DCB0160 clinical risk management before deployment."},
+      {h:"Health inequalities",b:"Risk models trained on NHS data encode existing inequalities — patients from deprived areas and some ethnic minority groups have sparser records, leading to underestimated risk scores. I would explicitly evaluate model performance across Core20PLUS5 dimensions and require subgroup fairness analysis as part of governance sign-off."},
+      {h:"Stakeholder engagement",b:"GPs and community nurses are high power / high interest — their co-design involvement is essential. Social care colleagues bring different data governance frameworks; early joint workshops will surface interoperability and consent challenges. Patient representatives, especially from communities likely to be targeted, should be involved from the start."}
+    ]
+  },
+  {
+    module:"Artificial Intelligence",
+    title:"Critically appraising an AI retinopathy screening model",
+    text:"A colleague shares a published paper describing a deep learning model detecting diabetic retinopathy from retinal fundus photographs with 94% sensitivity and 92% specificity (AUC 0.97). Your trust is considering purchasing a commercial product based on this model for its community diabetic eye screening programme. You have been asked to critically appraise the evidence and advise whether to proceed.",
+    qs:["How would you critically appraise the published evidence for this model?","What additional information or evaluation steps would be needed before deployment in your trust's setting?"],
+    hints:["TRIPOD+AI checklist (2024): transparent reporting assessment","Internal vs external validation: same dataset? Same population?","Sensitivity/specificity → PPV/NPV depend on local prevalence — recalculate","Calibration: are predicted probabilities reliable?","AUC 0.97: what threshold gives 94%/92%? Was it optimised on the test set (threshold optimism)?","PROBAST: risk of bias in prediction model studies","Population representativeness: diabetic retinopathy rates vary by ethnicity","SaMD classification, DTAC, DCB0129/0160 for commercial product","Real-world vs controlled performance gap","Model drift over time with equipment or population changes"],
+    model:[
+      {h:"Critical appraisal framework",b:"I would apply the TRIPOD+AI checklist (2024) to assess reporting completeness and transparency. Key questions: was the test set truly independent, or drawn from the same dataset as training? Were the 94%/92% figures derived at a threshold selected on the test set — which would constitute threshold optimism and inflated apparent performance? I would also apply PROBAST to assess risk of bias across four domains."},
+      {h:"External validity",b:"The most important question is whether published performance generalises to our population. Diabetic retinopathy prevalence, image quality, and demographics differ between healthcare systems. If the validation cohort does not resemble our NHS community screening population, the headline figures will not transfer. I would search for external validation studies in comparable settings — their absence is a significant concern."},
+      {h:"PPV and NPV in our population",b:"Sensitivity and specificity are properties of the test; PPV and NPV depend on local prevalence. In community diabetic eye screening with approximately 10% referable retinopathy prevalence, 92% specificity means ~8% false positive rate — substantial false-positive burden at scale. I would recalculate PPV and NPV using our local prevalence data before advising the trust."},
+      {h:"Regulatory requirements",b:"This is SaMD under UK MDR 2002, likely Class IIa or IIb. I would review the manufacturer's technical file, UKCA marking, and clinical safety documentation (DCB0129). The trust must complete a DCB0160 deployment risk assessment and DTAC review before purchase. I would not recommend proceeding without these documents."},
+      {h:"Local evaluation",b:"I would recommend a prospective pilot comparing model outputs against expert ophthalmologist grading on a representative local sample, explicitly including images of varying quality and a diverse patient demographic. Subgroup analysis by ethnicity is essential given variation in fundus pigmentation. Monitoring metrics and escalation thresholds must be defined before full deployment."}
+    ]
+  },
+  {
+    module:"Professional Foundations",
+    title:"Scope of practice under pressure from a senior colleague",
+    tip:"Shortlisted by trainee above",
+    text:"You have recently started as a newly registered Clinical Scientist in a Clinical Informatics team. Your supervisor is on annual leave. A senior clinician approaches you and asks you to independently validate a clinical algorithm that will stratify patients on a cancer waiting list, and to sign off the clinical safety documentation before she presents to the Trust Board next week. You are uncertain whether this falls within your current competence. She tells you it is urgent and that you are 'more than capable'.",
+    qs:["How do you respond to this request, and what factors inform your decision?","What principles guide a newly registered Clinical Scientist in recognising and managing the limits of their practice?"],
+    hints:["HCPC SoP 1.1: identify limits of practice and when to seek advice or refer","Threshold entry: the minimum safe and effective level — not independent expert","DCB0160 clinical safety sign-off requires specific competence; CSO designation is not a default registrant role","Social pressure from senior colleagues does not change professional obligations","If you sign beyond your competence and harm results, you bear professional and legal responsibility","Escalation: contact supervisor even on leave if genuinely urgent; identify clinical safety lead","Good Scientific Practice: knowing your limitations is an explicit GSP principle"],
+    model:[
+      {h:"How I would respond",b:"I would respond professionally and without confrontation, but clearly. I would explain that I take the request seriously but, as a newly registered Clinical Scientist, I need to be honest about my current competence before agreeing to sign off clinical safety documentation. HCPC Standards of Conduct Standard 1 — act in the best interests of service users — means I cannot allow social pressure or seniority to override my professional judgement."},
+      {h:"Why this exceeds threshold-entry scope",b:"HCPC Standards of Proficiency 1.1 requires me to identify the limits of my practice and know when to seek advice. As a threshold-entry registrant I am competent to practise safely at a foundation level. Signing off DCB0160 clinical safety documentation for a cancer waiting list algorithm requires domain expertise and, in most trusts, Clinical Safety Officer designation — this is not a role expected of a newly registered scientist."},
+      {h:"Escalation",b:"I would contact my supervisor — even on annual leave, a brief message explaining the situation is reasonable if the matter is genuinely urgent. I would also identify whether the trust has a senior Clinical Informatician or clinical safety lead who holds the relevant competence, and offer to support that person by preparing documentation — which is within my scope."},
+      {h:"Key principle",b:"Recognising and being transparent about the limits of my practice is a professional obligation and a patient safety requirement. The AHCS Good Scientific Practice framework makes this explicit. A newly registered scientist who exceeds their competence under pressure is more dangerous than one who appropriately escalates. Saying 'this falls outside my current scope and here is how I recommend we address that' is the correct professional response."}
+    ]
+  },
+  {
+    module:"Artificial Intelligence",
+    title:"AI ethics and data protection in a machine learning project",
+    tip:"Recalled by trainee above — AI ethics / data protection",
+    text:"Your Clinical Informatics team has developed a machine learning model to predict patients at risk of non-attendance at outpatient appointments. The model will be used to target reminder interventions. The Chief Digital Officer has asked you to present the ethical and data protection considerations before the model is deployed. The training data includes demographic information, postcodes, and historical attendance records from the past five years.",
+    qs:["What are the key ethical considerations you would raise before this model is deployed?","How would data protection law and NHS information governance frameworks apply to this project?"],
+    hints:["Algorithmic bias: socioeconomic and demographic proxies in attendance data may discriminate unfairly","Proxy discrimination: postcode is a proxy for deprivation and potentially ethnicity — protected characteristics","Fairness metrics: does the model perform equitably across subgroups?","Explainability: can the decision to target a patient be explained?","Proportionality: is predictive targeting proportionate to the intervention's benefit?","UK GDPR lawful basis: Article 6(1)(e) public task; Article 22 — automated decision-making safeguards if decisions made solely by algorithm","Caldicott Principle 1: justified purpose; Principle 3: minimum necessary data","Data minimisation: do you need postcodes or can deprivation index be used instead?","DPIA (Data Protection Impact Assessment): mandatory for large-scale processing of special category data","Patient transparency: are patients informed their data is being used in this way?","DTAC if the model influences clinical operational decisions"],
+    model:[
+      {h:"Algorithmic bias and fairness",b:"The training data includes attendance records that likely reflect pre-existing inequalities — patients from deprived areas, those with caring responsibilities, or those with language barriers may have higher non-attendance rates for structural reasons rather than disengagement. If the model targets these patients with reminders rather than addressing underlying barriers, it may entrench disadvantage rather than reduce it. I would require explicit subgroup fairness analysis before deployment, including performance across age, sex, ethnicity, and deprivation quintile."},
+      {h:"Proxy discrimination",b:"Postcode is a strong proxy for socioeconomic deprivation and, in some geographies, for ethnicity — both protected characteristics under the Equality Act 2010. Using postcode as a model feature risks indirect discrimination. I would assess whether deprivation index or travel time to clinic could replace raw postcode, and whether postcode is necessary at all for the stated purpose."},
+      {h:"Automated decision-making",b:"Under UK GDPR Article 22, individuals have the right not to be subject to decisions based solely on automated processing that significantly affects them. If the model directly triggers or withholds interventions without human review, this threshold may be met. I would ensure there is a meaningful human review step — a clinician or administrator who considers the model output before acting."},
+      {h:"Data protection obligations",b:"A Data Protection Impact Assessment (DPIA) is mandatory under UK GDPR Article 35 for large-scale processing involving demographic data that could produce legal or similarly significant effects on individuals. The lawful basis is likely Article 6(1)(e) public task. Data minimisation (Caldicott Principle 3) requires using only the minimum data necessary — I would challenge whether all five years of demographic history are needed."},
+      {h:"Patient transparency",b:"Patients are entitled to know how their data is being used. The trust's privacy notice should be updated to describe predictive modelling use cases. Where the model influences individual interventions, patients should be able to understand why they have been targeted and be able to contest that assessment."}
+    ]
+  },
+  {
+    module:"Systems Development",
+    title:"Procuring a new database system for clinical data",
+    tip:"Recalled by trainee above — procurement of a database system, business case, pros/cons",
+    text:"Your NHS trust wants to replace its ageing clinical data warehouse with a modern cloud-based analytical database platform. Several commercial products are available. The Associate Director of Informatics has asked you to lead the procurement process and present a business case to the Digital Investment Board. You have a budget of £800,000 over three years.",
+    qs:["How would you structure the procurement process, and what governance requirements apply to an NHS IT procurement of this scale?","What factors would you include in a business case, and how would you evaluate the pros and cons of different platform options?"],
+    hints:["Public sector procurement: PCR 2015 governs NHS contracts; above £213,477 threshold requires Find a Tender advertisement","NHS five case model: strategic, economic, commercial, financial, management","Requirements gathering before market engagement: functional and non-functional requirements","Options appraisal: status quo, build, buy, hybrid — weighted scoring matrix","Total cost of ownership: licensing, implementation, training, ongoing support, exit costs","Vendor lock-in: data portability, open standards, exit provisions in contract","Interoperability: HL7 FHIR APIs, SNOMED CT support, integration with EPR","Data governance: where will data be stored? UK data residency requirements","Cloud security: NHS DSPT, Cyber Essentials Plus, ISO 27001","KPIs and SLAs: what will be contractually required of the supplier?","Market engagement: pre-procurement soft market testing before formal tender"],
+    model:[
+      {h:"Procurement governance",b:"At £800,000 over three years, this contract exceeds the NHS services threshold under PCR 2015, requiring advertisement on Find a Tender (the UK replacement for OJEU). The process must adhere to the principles of transparency, equal treatment, proportionality, and non-discrimination. I would work with the trust's procurement team and legal advisers throughout. An internal SRO (Senior Responsible Owner) and a project governance structure under PRINCE2 should be in place before market engagement."},
+      {h:"Requirements first",b:"Before approaching the market, I would lead a requirements gathering exercise with clinical, analytical, and technical stakeholders to produce a clear specification: functional requirements (what the system must do — query performance, reporting tools, integration with EPR), non-functional requirements (security, availability, scalability, accessibility), and data governance requirements (UK data residency, NHS DSPT compliance, audit trails). Requirements must be agreed and documented before writing the Invitation to Tender."},
+      {h:"NHS five case model",b:"The business case should follow the NHS five case model: Strategic case (why replace now — risks of current system, alignment with trust digital strategy); Economic case (options appraisal across at minimum: do nothing, extend current system, buy commercial platform, build in-house — with a weighted scoring matrix including total cost of ownership); Commercial case (proposed procurement route, contract structure, risk allocation); Financial case (affordability within budget, phasing); Management case (implementation plan, governance, benefits realisation)."},
+      {h:"Pros/cons of platform options",b:"Cloud-based commercial platforms (e.g. Snowflake, Azure Synapse, Databricks): pros — rapid deployment, managed infrastructure, scalability, modern analytics tooling; cons — ongoing licensing costs, potential vendor lock-in, data residency compliance complexity. On-premises or hybrid: pros — data sovereignty, integration with existing infrastructure; cons — capital expenditure, slower innovation cycle, ongoing maintenance burden. I would score options against weighted criteria agreed with stakeholders before recommendation."},
+      {h:"Interoperability and exit provisions",b:"I would require FHIR API compatibility, SNOMED CT support, and documented integration pathways with the trust's EPR (Epic/Cerner) as minimum requirements. The contract should include data portability obligations, open-format export capabilities, and a defined exit strategy to prevent vendor lock-in. SLAs for availability and performance should be contractually binding."}
+    ]
+  },
+  {
+    module:"Data Science & Engineering",
+    title:"Presenting complex data to a non-technical audience",
+    tip:"Recalled by trainee above — how to make data presentable for non-technical audience",
+    text:"Your Clinical Informatics team has completed an analysis showing variation in length of stay (LoS) across surgical specialties in your trust. The findings are statistically significant and clinically important, showing that one specialty has a median LoS 2.3 days longer than the peer group average after case-mix adjustment. You have been asked to present these findings at the Trust Board — a mixed audience of executives, clinicians, governors, and finance directors, most of whom are not data analysts.",
+    qs:["How would you approach presenting this analysis to a non-technical Board audience?","What principles guide effective data communication, and what would you specifically avoid?"],
+    hints:["Know your audience: executives want implications and actions, not methods","Start with the 'so what' — lead with the finding and its consequence, not the methodology","Plain language: avoid p-values, confidence intervals, and statistical jargon without explanation","Data visualisation: bar charts and line charts over box plots or scatter plots for lay audiences","Case-mix adjustment: explain in plain terms (comparing like with like) without the statistics","Narrative structure: context → finding → implication → recommended action","Avoid tables of raw numbers as primary communication","Use benchmarks and real-world equivalents (e.g. 2.3 extra days = X bed-days per year = £Y)","Don't overstate precision: '2.3 days' not '2.3271 days'","Acknowledge uncertainty and limitations honestly but briefly","Visual design: clear titles, labelled axes, accessible colour palette (colourblind-friendly), no 3D charts"],
+    model:[
+      {h:"Know your audience first",b:"A Trust Board is not a data science audience. Executives, governors, and non-clinical directors need to understand what the data means for patients, the organisation, and what they are being asked to decide — not how the analysis was conducted. I would structure the presentation around the business question and the recommended action, not around my analytical workflow."},
+      {h:"Lead with the finding",b:"I would open with the key message stated plainly: 'One surgical specialty has patients staying an average of 2.3 days longer than comparable trusts, after accounting for differences in case complexity. This equates to approximately 480 additional occupied bed-days per year and an estimated cost of £340,000.' Translate statistics into consequences that are meaningful to the audience — bed-days, patient experience, cost — before explaining how the number was derived."},
+      {h:"Plain language for methods",b:"Case-mix adjustment can be explained as 'comparing like with like — we have accounted for differences in how complex patients are across specialties, so we are comparing equivalent cases.' I would not present odds ratios, confidence intervals, or p-values to a lay Board without explanation. If I mention uncertainty, I would say 'we are confident in this finding across all analytical approaches we used' rather than citing a p-value."},
+      {h:"Visualisation principles",b:"For this audience I would use a simple bar chart showing LoS by specialty with a clear reference line for the peer median — readable at a glance. I would avoid box plots (unfamiliar), scatter plots, and tables of raw numbers as the primary display. Axes should be clearly labelled, titles should state the finding (not describe the chart), and colours should be accessible to people with colour blindness. No 3D charts, no unnecessary decoration."},
+      {h:"What to avoid",b:"I would avoid: leading with methods and technical detail; over-precise numbers (2.3 days, not 2.3271); jargon without definition; and presenting findings without a clear recommendation or action. I would also avoid presenting findings in a way that attributes blame to individuals — the analysis describes system performance, not individual clinician fault, and framing matters significantly in a Board setting."}
+    ]
+  },
+  {
+    module:"Professional Foundations",
+    title:"Standard Operating Procedures and quality management",
+    tip:"Recalled by trainee above — Standard Operating Procedures",
+    text:"A new analytical pipeline has been developed by your Clinical Informatics team that automates extraction and reporting of NHS RTT (Referral to Treatment) waiting list data for the trust's weekly performance reports. The pipeline has been tested internally and is ready for clinical use. Your supervisor has asked you to develop the Standard Operating Procedure (SOP) for the pipeline and ensure it is integrated into the team's Quality Management System before go-live.",
+    qs:["What should a Standard Operating Procedure include, and how would you approach writing one for this analytical pipeline?","How does an SOP fit within a broader Quality Management System, and what controls would you put in place to maintain quality over time?"],
+    hints:["SOP purpose: ensure consistency, reproducibility, and safety in a defined process","SOP structure: title, version, effective date, author, approver, scope, responsibilities, procedure steps, references, review schedule","ISO 13485: SOPs are mandatory within a certified QMS — must be documented, approved, version-controlled, and reviewed","Version control: date of creation, version number, change log — never overwrite without formal change control","Training record: staff must be signed off as trained against the current version before performing the task","Review cycle: SOPs should be reviewed at defined intervals (typically annually) or when the process changes","CAPA: non-conformities found in process execution feed back into SOP review and improvement","Validation: analytical pipeline should be validated before SOP is finalised (test with known outputs)","Change control: what happens if the source data schema or RTT rules change?","Out-of-scope situations: SOP should specify what to do when edge cases arise — escalation pathway"],
+    model:[
+      {h:"Purpose and structure of an SOP",b:"An SOP is a documented, step-by-step instruction set that ensures a process is performed consistently and correctly regardless of who is executing it. For this RTT pipeline the SOP should include: title and unique document identifier; version number and effective date; author and approver signatures; scope (what the SOP covers and what it does not); roles and responsibilities; a numbered step-by-step procedure; expected inputs and outputs with validation checks; error handling and escalation pathway for out-of-scope situations; references to related documents; and a defined review date."},
+      {h:"Writing the procedure",b:"The procedure steps should be written in active, imperative language at a level of detail sufficient for a competent but unfamiliar team member to execute the pipeline correctly. For an automated pipeline this includes: how to initiate the pipeline run; how to verify the source data extract is complete and current; what validation outputs to check and what constitutes a pass; where the output report is stored and how it is transmitted; and who to notify if validation checks fail. Screenshots or annotated outputs are useful where the steps are computer-based."},
+      {h:"Integration into the QMS",b:"Under ISO 13485 (which CSC is certified to), SOPs are mandatory controlled documents. The SOP must be formally approved by the appropriate authority before going live, stored in the QMS document management system, and version-controlled with a change log. Previous versions must be archived but clearly marked as superseded. All staff who will execute the process must be recorded as trained against the current version before performing it."},
+      {h:"Maintaining quality over time",b:"I would establish a defined review cycle — at minimum annually, or when the RTT rules, source data schema, or organisational structure changes. Any non-conformities identified during execution (errors, unexpected outputs, process deviations) should be logged and reviewed as potential CAPA inputs. Change control: any modification to the pipeline itself requires a formal change control process before the SOP is updated, not after."},
+      {h:"Validation before finalising",b:"The pipeline should be validated before the SOP is finalised — running with known historical data to confirm outputs match expected values. Validation evidence should be documented and referenced in the SOP. This ensures the written procedure reflects the actual validated process."}
+    ]
+  },
+  {
+    module:"Data Science & Engineering",
+    title:"Investigating a surgeon's complication rates",
+    tip:"Recalled by trainee above — surgeon with high complication rates, what data to know for a fair conclusion",
+    text:"A clinical governance meeting has flagged that one consultant surgeon appears to have a complication rate that is twice the national average for a particular procedure. The Medical Director has asked your Clinical Informatics team to provide an analytical assessment to inform whether further investigation is warranted. You have access to the trust's EPR data and national benchmarking datasets.",
+    qs:["What data and contextual factors would you need to understand before drawing any conclusions about this surgeon's complication rate?","How would you present your findings fairly, and what are the limitations of this type of analysis?"],
+    hints:["Case-mix adjustment: complexity, comorbidities, ASA grade — like must be compared with like","Selection bias: high-volume complex case referral centres will have higher raw complication rates","Denominators: complication rate = complications / total cases — is the denominator correct and complete?","Coding quality: are complications coded consistently? ICD-10 coding variation affects apparent rates","Definition of complication: what counts? Broad vs narrow definition changes the rate substantially","Volume-outcome relationship: low-volume surgeons have more variable rates by chance alone","Statistical significance vs clinical significance: small numbers make rates unstable","Funnel plot: standard tool for comparing outcomes across clinicians while accounting for volume","National benchmarking: is the national average appropriate? Case mix matched?","Human factors: locum cover, anaesthetic team, theatre environment, time period","Confidentiality: identifiable surgeon data — handle under strict governance; inform surgeon before wider presentation","HCPC/GMC: if patient safety concern is confirmed, regulatory notification obligations apply"],
+    model:[
+      {h:"Case-mix adjustment first",b:"A raw complication rate comparison is meaningless without case-mix adjustment. A surgeon who takes the most complex, high-risk referrals — highest ASA grade, most comorbidities, emergency cases — will inevitably have higher raw complication rates than a colleague performing elective low-risk cases. I would need data on patient complexity (ASA grade, Charlson Comorbidity Index, age, emergency vs elective), case volume, and procedure type before any comparison is valid."},
+      {h:"Data quality and definitions",b:"I would audit the denominator and the complication definition. Is the denominator correct — are all cases by this surgeon captured, including day cases or procedures coded under different specialties? Is there consistent ICD-10 coding of complications across surgeons and across time? A variation in coding practice rather than clinical reality could entirely explain an apparent difference. I would also check whether the national benchmark uses the same complication definition as our local coding."},
+      {h:"Statistical stability",b:"Small numbers make complication rates highly variable by chance. If this surgeon performs 40–50 procedures per year, even a few additional complications will produce a rate double the average. I would calculate confidence intervals around the observed rate and use a funnel plot — the standard tool for comparing clinical outcomes across practitioners — to show whether the observed rate falls outside expected control limits accounting for volume. A result within the funnel is more likely to reflect chance variation than a genuine outlier."},
+      {h:"Contextual factors",b:"I would also examine: time period (was there a change in practice, staff, equipment, or patient selection at a particular point?); locum and trainee involvement in cases; anaesthetic team; and whether complications cluster in time (suggesting a specific incident or change rather than a sustained pattern). These factors are not visible in the data alone and would require discussion with the clinical team."},
+      {h:"Presenting findings and limitations",b:"I would present findings to the Medical Director using a funnel plot with clearly labelled control limits, report the case-mix adjusted rate alongside the raw rate, and explicitly state what the data can and cannot tell us. I would be clear that statistical outlier status is not the same as confirmed patient safety concern — it is a signal warranting structured review, not a conclusion. I would handle the surgeon's identified data under strict governance, share findings with them before wider presentation (in line with fair process principles), and note that if a patient safety concern is confirmed through further review, GMC notification obligations may apply."}
+    ]
+  },
+  {
+    module:"Policy & Strategy",
+    title:"Using demand and capacity data to plan hospital bed numbers",
+    tip:"Recalled by trainee above — hospital bed and patient demand data, safe number of beds",
+    text:"The trust's Chief Operating Officer has asked your Clinical Informatics team to build a model to help determine the safe number of inpatient beds to keep available so that the hospital does not become dangerously overcrowded. She is concerned about the trust regularly operating above 95% bed occupancy. You have access to historic admissions data, length of stay data, discharge patterns, and seasonal demand information.",
+    qs:["How would you approach building a model to determine a safe number of available beds?","What data sources, analytical methods, and key assumptions would underpin your analysis, and what are the limitations?"],
+    hints:["Queuing theory: Erlang distribution is used in NHS capacity modelling — not simple average occupancy","95% occupancy threshold: NHS guidance historically recommends not exceeding 85% to maintain safe flow","Variation matters more than averages: mean LoS and mean admissions are not sufficient — need variability","Coefficient of variation: measure of demand variability that determines buffer needed","Emergency vs elective demand: different predictability, different planning approaches","Seasonality: winter pressures, bank holidays, flu season affect admissions","Length of stay (LoS) distribution: right-skewed — mean is misleading; use median and percentiles","Discharge patterns: discharges cluster mid-morning; bottlenecks affect apparent bed need","Simulation modelling: Monte Carlo or discrete event simulation to model stochastic demand","NHS Improvement: Model Hospital and Model Health System tools provide benchmarking","Frailty and delayed transfers of care: patients ready for discharge but unable to leave inflate apparent bed need","Sensitivity analysis: how does the model output change under different assumptions?"],
+    model:[
+      {h:"Why averages are not enough",b:"The most important principle to establish upfront is that bed need cannot be calculated from average demand alone. If on average 100 patients are admitted per day with an average LoS of 3 days, a naive calculation suggests 300 beds are needed. But demand is variable — on busy days 130 patients may be admitted, and LoS is right-skewed with a small number of patients occupying beds for weeks. Planning to average demand guarantees frequent overcrowding. The hospital needs capacity to absorb demand peaks."},
+      {h:"Analytical approach: queuing theory",b:"The appropriate framework is queuing theory — specifically the Erlang-C or Erlang-B models used in NHS capacity planning, which model the probability of a patient being unable to access a bed given a specified arrival rate, service rate (LoS), and number of beds. The key insight from these models is that to maintain a low probability of overflow (typically <5%), occupancy must be kept well below 100%. NHS England guidance has historically recommended no more than 85% average occupancy for acute general beds. I would use historical admissions and LoS data to parameterise these models."},
+      {h:"Data inputs and analysis",b:"I would need: daily admission counts by specialty over at least two years (to capture seasonal variation); individual patient LoS distributions (not just means — medians and 90th percentiles matter); day-of-week and month-of-year patterns; emergency vs elective admission split; and discharge timing patterns (bottlenecks caused by late discharges inflate apparent bed demand). Delayed transfers of care should be quantified separately — patients ready to leave but blocked by social care or transport artificially inflate occupied bed counts."},
+      {h:"Simulation modelling",b:"For the trust's operational use I would build a discrete event simulation or Monte Carlo model that generates thousands of simulated days using the observed demand distributions, producing a probability distribution of beds required on any given day. This allows the trust to ask: 'How many beds do we need to be 95% confident of accommodating demand on a winter weekday?' This is more actionable than a single average-based figure."},
+      {h:"Limitations and assumptions",b:"Key limitations: the model assumes future demand resembles past demand — it will not predict structural shifts (e.g. a new pathway reducing elective admissions). It cannot account for extreme events (pandemic, major incident). Length of stay is affected by factors outside the model — staffing levels, pharmacy delays, social care capacity. I would present the outputs with sensitivity analysis showing how the recommended bed number changes under different assumptions, and recommend the model be updated annually with refreshed data."}
+    ]
+  }
+];
+
+let currentIdx=0, phase='pre', timerInterval=null, timeLeft=0, totalTime=0;
+const done=new Set();
+let filterModule='all';
+
+function modClass(m){return MOD_STYLES[m]||'ds'}
+
+function buildHome(){
+  const list=document.getElementById('scList');
+  list.innerHTML='';
+  const filtered=SCENARIOS.filter((_,i)=>{
+    if(filterModule==='all')return true;
+    return SCENARIOS[i].module===filterModule;
+  });
+  SCENARIOS.forEach((sc,i)=>{
+    const isDone=done.has(i);
+    const cls=modClass(sc.module);
+    const show=filterModule==='all'||sc.module===filterModule;
+    const card=document.createElement('div');
+    card.className='sc-card'+(show?'':' hidden');
+    card.innerHTML=`
+      <div class="sc-num${isDone?' done':''}">${isDone?'✓':(i+1)}</div>
+      <div class="sc-body">
+        <div class="sc-title">${sc.title}</div>
+        <div class="sc-meta">
+          <span class="mod-tag" style="background:var(--${cls}-bg);color:var(--${cls})">${sc.module}</span>
+          ${sc.tip?`<span class="sc-note" style="color:var(--${cls})">${sc.tip}</span>`:''}
+          ${isDone?'<span class="sc-note" style="color:var(--station)">Completed</span>':''}
+        </div>
+      </div>
+      <span class="sc-arrow">→</span>`;
+    card.onclick=()=>startStation(i);
+    list.appendChild(card);
+  });
+  document.getElementById('doneBadge').textContent=done.size+' / 13 done';
+}
+
+function buildFilters(){
+  const row=document.getElementById('filterRow');
+  const modules=['all',...Object.keys(MOD_STYLES)];
+  modules.forEach(m=>{
+    const chip=document.createElement('button');
+    chip.className='fchip'+(m==='all'?' active':'');
+    chip.textContent=m==='all'?'All modules':m;
+    chip.onclick=()=>{
+      filterModule=m;
+      document.querySelectorAll('.fchip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      buildHome();
+    };
+    row.appendChild(chip);
+  });
+}
+
+function showView(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('navHomeBtn').style.display=id==='homeView'?'none':'block';
+  window.scrollTo(0,0);
+}
+
+function startStation(idx){
+  currentIdx=idx;
+  const sc=SCENARIOS[idx];
+  const cls=modClass(sc.module);
+  document.getElementById('scNumLabel').textContent=idx+1;
+  document.getElementById('scModTag').textContent=sc.module;
+  document.getElementById('scModTag').style.background='var(--'+cls+'-bg)';
+  document.getElementById('scModTag').style.color='var(--'+cls+')';
+  document.getElementById('scText').textContent=sc.text;
+  const qi=document.getElementById('qItems');
+  qi.innerHTML='';
+  sc.qs.forEach((q,i)=>{
+    const d=document.createElement('div');
+    d.className='q-item';
+    d.innerHTML=`<span class="q-n">${i+1}.</span><span>${q}</span>`;
+    qi.appendChild(d);
+  });
+  const hp=document.getElementById('hintsPanel');
+  hp.innerHTML='';
+  sc.hints.forEach(h=>{
+    const r=document.createElement('div');r.className='hint-row';r.textContent=h;
+    hp.appendChild(r);
+  });
+  hp.style.display='none';
+  document.getElementById('hintsToggleBtn').textContent='Show curriculum pointers ↓';
+  setPhase('pre');
+  showView('stationView');
+}
+
+function setPhase(p){
+  phase=p;
+  if(timerInterval)clearInterval(timerInterval);
+  const pill=document.getElementById('phasePill');
+  const note=document.getElementById('phaseNote');
+  const btn=document.getElementById('mainBtn');
+  const fill=document.getElementById('progressFill');
+  if(p==='pre'){
+    timeLeft=180;totalTime=180;
+    pill.textContent='Reading time';pill.className='phase-pill reading';
+    fill.className='progress-fill reading';
+    note.textContent='3 minutes to read the scenario and questions. The station will begin automatically when reading time ends. You can skip ahead when ready.';
+    btn.textContent='Skip to station →';
+  } else {
+    timeLeft=540;totalTime=540;
+    pill.textContent='Station';pill.className='phase-pill station';
+    fill.className='progress-fill station';
+    note.textContent='Provide your response to the assessor. You can revisit the pre-reading at any time. Once you have finished you may leave early using the button below, or use remaining time to add to your answer.';
+    btn.textContent='Finish station';
+  }
+  fill.style.width='100%';
+  tickTimer();
+  timerInterval=setInterval(tickTimer,1000);
+}
+
+function tickTimer(){
+  const m=Math.floor(timeLeft/60);
+  const s=timeLeft%60;
+  const disp=document.getElementById('timerDigits');
+  const fill=document.getElementById('progressFill');
+  disp.textContent=m+':'+(s<10?'0':'')+s;
+  const pct=Math.max(0,Math.round((timeLeft/totalTime)*100));
+  fill.style.width=pct+'%';
+  if(timeLeft<=30){disp.className='timer-digits danger';fill.className='progress-fill danger';}
+  else if(timeLeft<=60){disp.className='timer-digits warn';fill.className='progress-fill warn';}
+  else{disp.className='timer-digits';fill.className='progress-fill '+(phase==='pre'?'reading':'station');}
+  if(timeLeft<=0){
+    clearInterval(timerInterval);
+    if(phase==='pre')setPhase('station');else finishStation();
+    return;
+  }
+  timeLeft--;
+}
+
+function handleMainBtn(){
+  if(phase==='pre')setPhase('station');else finishStation();
+}
+
+function finishStation(){
+  if(timerInterval)clearInterval(timerInterval);
+  done.add(currentIdx);
+  const sc=SCENARIOS[currentIdx];
+  const cls=modClass(sc.module);
+  document.getElementById('reviewTitle').textContent='Station '+(currentIdx+1)+' — model answer';
+  document.getElementById('reviewSub').textContent=sc.title+' · '+sc.module;
+  const ms=document.getElementById('modelSections');
+  ms.innerHTML='';
+  sc.model.forEach(item=>{
+    const card=document.createElement('div');
+    card.className='model-section';
+    card.innerHTML=`<div class="model-heading">${item.h}</div><div class="model-body">${item.b}</div>`;
+    ms.appendChild(card);
+  });
+  const nextIdx=(currentIdx+1)%SCENARIOS.length;
+  document.getElementById('nextBtn').textContent='Next: '+SCENARIOS[nextIdx].title.substring(0,40)+'… →';
+  document.getElementById('doneBadge').textContent=done.size+' / 13 done';
+  showView('reviewView');
+}
+
+function nextScenario(){
+  startStation((currentIdx+1)%SCENARIOS.length);
+}
+
+function goHome(){
+  if(timerInterval)clearInterval(timerInterval);
+  buildHome();
+  showView('homeView');
+}
+
+function toggleHints(){
+  const hp=document.getElementById('hintsPanel');
+  const btn=document.getElementById('hintsToggleBtn');
+  const open=hp.style.display==='block';
+  hp.style.display=open?'none':'block';
+  btn.textContent=open?'Show curriculum pointers ↓':'Hide curriculum pointers ↑';
+}
+
+buildFilters();buildHome();
+</script>
+</body>
+</html>
