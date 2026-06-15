@@ -77,3 +77,4 @@ This role offers a unique opportunity to contribute to the advancement of health
 ## FYA Revision
 [FYA Keyword Reference](https://estyli.github.io/Clinical-Informatics/fya_keywords.html)
 [FYA Practice](https://estyli.github.io/Clinical-Informatics/FYA_Practice.html)
+[FYA Plan](https://estyli.github.io/Clinical-Informatics/fya_plan.html)
