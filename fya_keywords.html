@@ -3,92 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="STP Clinical Informatics FYA keyword reference">
+<meta name="description" content="STP Clinical Informatics FYA keyword reference — NHS Scientist Training Programme">
 <title>FYA Keywords — Clinical Informatics STP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #f7f6f2;
   --surface: #ffffff;
   --surface2: #f0efe9;
-  --border: rgba(0,0,0,0.1);
+  --border: rgba(0,0,0,0.09);
   --border2: rgba(0,0,0,0.18);
   --text: #1a1917;
-  --muted: #6b6960;
+  --muted: #5c5b53;
   --hint: #9e9d96;
   --radius: 10px;
-  --prof: #4a3fa0; --prof-bg: #eeecfd;
-  --ds: #0f6e56; --ds-bg: #e1f5ee;
-  --sys: #1557a0; --sys-bg: #e6f0fb;
-  --pol: #7a4a0a; --pol-bg: #faeeda;
-  --dh: #7a2510; --dh-bg: #faece7;
-  --ai: #7a2040; --ai-bg: #fbeaf0;
+  --prof:#4a3fa0;--prof-bg:#eeecfd;
+  --ds:#0f6e56;--ds-bg:#e1f5ee;
+  --sys:#1557a0;--sys-bg:#e6f0fb;
+  --pol:#7a4a0a;--pol-bg:#faeeda;
+  --dh:#7a2510;--dh-bg:#faece7;
+  --ai:#7a2040;--ai-bg:#fbeaf0;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #181714;
-    --surface: #222120;
-    --surface2: #2a2927;
-    --border: rgba(255,255,255,0.1);
-    --border2: rgba(255,255,255,0.18);
-    --text: #f0efe9;
-    --muted: #a8a79f;
-    --hint: #6b6960;
-    --prof: #b0a8f0; --prof-bg: #2a2660;
-    --ds: #5dcaa5; --ds-bg: #0a3028;
-    --sys: #7ab8f0; --sys-bg: #0a2440;
-    --pol: #f0b860; --pol-bg: #3a2808;
-    --dh: #f08870; --dh-bg: #3a1408;
-    --ai: #f090b0; --ai-bg: #3a0e22;
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#181714;--surface:#222120;--surface2:#2a2927;
+    --border:rgba(255,255,255,0.09);--border2:rgba(255,255,255,0.18);
+    --text:#f0efe9;--muted:#a8a79f;--hint:#6b6960;
+    --prof:#b0a8f0;--prof-bg:#2a2660;
+    --ds:#5dcaa5;--ds-bg:#0a3028;
+    --sys:#7ab8f0;--sys-bg:#0a2440;
+    --pol:#f0b860;--pol-bg:#3a2808;
+    --dh:#f08870;--dh-bg:#3a1408;
+    --ai:#f090b0;--ai-bg:#3a0e22;
   }
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{font-size:16px}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:2rem}
-
-header{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 1rem 0;position:sticky;top:0;z-index:100}
-.header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
-.header-top h1{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
-.count-badge{font-family:'DM Mono',monospace;font-size:11px;background:var(--surface2);color:var(--hint);padding:3px 8px;border-radius:20px;border:1px solid var(--border)}
-
-.search-wrap{position:relative;margin-bottom:.75rem}
-.search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--hint);fill:none;stroke-width:2;stroke-linecap:round}
-#q{width:100%;padding:10px 12px 10px 36px;font-family:'DM Sans',sans-serif;font-size:16px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);outline:none;-webkit-appearance:none}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:3rem}
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 1rem 0;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.header-top h1{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--hint);letter-spacing:.06em;text-transform:uppercase}
+.count-badge{font-family:'DM Mono',monospace;font-size:11px;background:var(--surface2);color:var(--hint);padding:3px 9px;border-radius:20px;border:1px solid var(--border)}
+.search-wrap{position:relative;margin-bottom:.65rem}
+.search-wrap svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--hint);fill:none;stroke-width:2;stroke-linecap:round}
+#q{width:100%;padding:10px 12px 10px 34px;font-family:'DM Sans',sans-serif;font-size:16px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);outline:none;-webkit-appearance:none}
 #q:focus{border-color:var(--border2)}
 #q::placeholder{color:var(--hint)}
-
 .chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:.75rem;scrollbar-width:none;-ms-overflow-style:none}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex-shrink:0;font-size:12px;font-weight:500;padding:6px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface2);color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .15s}
+.chip{flex-shrink:0;font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface2);color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'DM Sans',sans-serif}
 .chip.active{background:var(--text);color:var(--bg);border-color:var(--text)}
-
 main{padding:1rem}
-.section{margin-bottom:1.5rem}
-.section-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--hint);margin-bottom:.5rem;display:flex;align-items:center;gap:8px}
+.section{margin-bottom:1.75rem}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--hint);margin-bottom:.6rem;display:flex;align-items:center;gap:8px}
 .section-label::after{content:'';flex:1;height:1px;background:var(--border)}
 .cards{display:grid;grid-template-columns:1fr;gap:8px}
 @media(min-width:540px){.cards{grid-template-columns:1fr 1fr}}
 @media(min-width:820px){.cards{grid-template-columns:1fr 1fr 1fr}}
-
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;display:flex;flex-direction:column;gap:4px;cursor:default;transition:border-color .15s;position:relative;overflow:hidden}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px 10px;display:flex;flex-direction:column;gap:3px;position:relative;overflow:hidden}
 .card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
 .card.m-prof::before{background:var(--prof)}.card.m-ds::before{background:var(--ds)}.card.m-sys::before{background:var(--sys)}.card.m-pol::before{background:var(--pol)}.card.m-dh::before{background:var(--dh)}.card.m-ai::before{background:var(--ai)}
-.card:active{border-color:var(--border2)}
 .term{font-size:14px;font-weight:600;color:var(--text);line-height:1.3}
-.def{font-size:13px;color:var(--muted);line-height:1.5}
-.tag{align-self:flex-start;margin-top:2px;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;font-family:'DM Mono',monospace;letter-spacing:.03em}
+.def{font-size:13px;color:var(--muted);line-height:1.55;margin-top:2px}
+.link-row{margin-top:6px;display:flex;flex-wrap:wrap;gap:5px}
+.ref-link{font-size:11px;font-family:'DM Mono',monospace;padding:2px 8px;border-radius:20px;text-decoration:none;border:1px solid currentColor;opacity:.75;transition:opacity .15s;display:inline-block}
+.ref-link:hover{opacity:1}
+.ref-link.m-prof{color:var(--prof)}.ref-link.m-ds{color:var(--ds)}.ref-link.m-sys{color:var(--sys)}.ref-link.m-pol{color:var(--pol)}.ref-link.m-dh{color:var(--dh)}.ref-link.m-ai{color:var(--ai)}
+.tag{align-self:flex-start;margin-top:5px;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;font-family:'DM Mono',monospace;letter-spacing:.03em}
 .tag.m-prof{background:var(--prof-bg);color:var(--prof)}.tag.m-ds{background:var(--ds-bg);color:var(--ds)}.tag.m-sys{background:var(--sys-bg);color:var(--sys)}.tag.m-pol{background:var(--pol-bg);color:var(--pol)}.tag.m-dh{background:var(--dh-bg);color:var(--dh)}.tag.m-ai{background:var(--ai-bg);color:var(--ai)}
-
 .empty{text-align:center;padding:3rem 1rem;color:var(--hint);font-size:14px}
 .empty span{font-size:2rem;display:block;margin-bottom:.5rem}
+mark{background:rgba(255,200,0,.35);border-radius:2px;padding:0 1px;color:inherit}
 </style>
 </head>
 <body>
 <header>
   <div class="header-top">
-    <h1>FYA Keywords</h1>
+    <h1>FYA Keywords · Clinical Informatics STP</h1>
     <span class="count-badge" id="countbadge">— terms</span>
   </div>
   <div class="search-wrap">
@@ -98,127 +90,471 @@ main{padding:1rem}
   <div class="chips" id="chips"></div>
 </header>
 <main id="out"></main>
-
 <script>
 const MODULES=[
   {id:"prof",label:"Professional Foundations"},
-  {id:"ds",label:"Data Science"},
-  {id:"sys",label:"Systems Dev"},
+  {id:"ds",label:"Data Science & Engineering"},
+  {id:"sys",label:"Systems Development"},
   {id:"pol",label:"Policy & Strategy"},
-  {id:"dh",label:"Digital Health"},
-  {id:"ai",label:"AI"},
+  {id:"dh",label:"Digital Health & CDS"},
+  {id:"ai",label:"Artificial Intelligence"},
 ];
+
+// links: [{label, url}]
 const TERMS=[
-  {m:"prof",t:"Duty of candour",d:"Legal obligation to be open and honest when things go wrong"},
-  {m:"prof",t:"Duty of care",d:"Responsibility to avoid acts/omissions that could cause reasonably foreseeable harm"},
-  {m:"prof",t:"HCPC Standards of Proficiency",d:"Regulatory threshold competencies required for Clinical Scientist registration"},
-  {m:"prof",t:"Scope of practice",d:"Boundaries of what you are trained and competent to do"},
-  {m:"prof",t:"Fitness to practise",d:"Meeting the standards needed to be a safe and effective professional"},
-  {m:"prof",t:"Informed consent",d:"Patient agreement to care/research after receiving sufficient information to decide freely"},
-  {m:"prof",t:"Confidentiality",d:"Obligation to protect patient information; shared only on a need-to-know basis"},
-  {m:"prof",t:"Caldicott Principles",d:"Seven (now eight) principles governing NHS use of patient-identifiable data"},
-  {m:"prof",t:"Protected characteristics",d:"Nine characteristics (e.g. age, race, disability) protected under Equality Act 2010"},
-  {m:"prof",t:"Unconscious bias",d:"Automatic, unintended prejudices affecting decisions without awareness"},
-  {m:"prof",t:"Reflective practice",d:"Structured thinking about experience to improve future performance (e.g. Gibbs cycle)"},
-  {m:"prof",t:"CPD",d:"Ongoing learning and development to maintain and improve professional competence"},
-  {m:"prof",t:"NHS Constitution",d:"Document setting out rights and responsibilities for staff, patients, and the public"},
-  {m:"prof",t:"NHS CARE values",d:"Compassion, Respect, Everyone counts — core values underpinning NHS culture"},
-  {m:"prof",t:"Safeguarding",d:"Protecting vulnerable people (children, adults at risk) from abuse or neglect"},
-  {m:"prof",t:"Audit cycle",d:"Measure → compare to standard → implement change → re-measure loop for quality"},
-  {m:"prof",t:"PDSA cycle",d:"Plan-Do-Study-Act; iterative QI methodology for testing change ideas"},
-  {m:"prof",t:"Risk management",d:"Identifying, assessing, and mitigating hazards to patients, staff, and systems"},
-  {m:"prof",t:"Governance",d:"Frameworks and accountability structures ensuring safe, effective, and accountable care"},
-  {m:"prof",t:"Clinical governance",d:"NHS system by which trusts are accountable for quality and safety of clinical services"},
-  {m:"prof",t:"Patient autonomy",d:"Right of patients to make informed decisions about their own care"},
-  {m:"prof",t:"Equality Act 2010",d:"UK law prohibiting discrimination against people with protected characteristics"},
-  {m:"prof",t:"Multi-professional working",d:"Different health professions collaborating around a patient, each contributing expertise"},
-  {m:"prof",t:"Health inequalities",d:"Avoidable, unfair differences in health outcomes across population groups"},
-  {m:"prof",t:"Social determinants of health",d:"Non-medical factors (housing, income, education) shaping health outcomes"},
-  {m:"prof",t:"Change management",d:"Structured approach to transitioning individuals/teams/organisations to a desired state"},
-  {m:"prof",t:"Kotter's 8-step model",d:"Leading change framework: urgency → coalition → vision → communicate → empower etc."},
-  {m:"prof",t:"Lean / Six Sigma",d:"Process improvement methods: Lean removes waste; Six Sigma reduces variation"},
-  {m:"prof",t:"ISO 13485",d:"Quality management standard for medical device design and manufacture"},
-  {m:"ds",t:"Data wrangling",d:"Cleaning and reshaping raw data into an analysis-ready format"},
-  {m:"ds",t:"Reproducible research",d:"Sharing code, data, and methods so others can verify and replicate findings"},
-  {m:"ds",t:"Hypothesis testing",d:"Statistical procedure to decide whether data support a claim about a population"},
-  {m:"ds",t:"p-value",d:"Probability of observing results as extreme as seen, assuming the null hypothesis is true"},
-  {m:"ds",t:"Confidence interval",d:"Range of values likely to contain the true population parameter with a stated probability"},
-  {m:"ds",t:"Regression modelling",d:"Statistical method to quantify relationships between outcome and predictor variables"},
-  {m:"ds",t:"Confounding",d:"Variable associated with both exposure and outcome, distorting the apparent relationship"},
-  {m:"ds",t:"Bias (statistical)",d:"Systematic error skewing results away from the true value"},
-  {m:"ds",t:"Causal inference",d:"Estimating the effect of an intervention, ruling out confounding/reverse causation"},
-  {m:"ds",t:"Descriptive analysis",d:"Summarising what is in a dataset (counts, means, distributions)"},
-  {m:"ds",t:"Predictive modelling",d:"Using historical data to forecast future outcomes"},
-  {m:"ds",t:"Data linkage",d:"Joining records from different datasets to follow patients across settings"},
-  {m:"ds",t:"Data governance",d:"Policies and processes for managing data quality, access, and use"},
-  {m:"ds",t:"UK GDPR / DPA 2018",d:"Legal framework for data protection; lawful bases, rights of data subjects"},
-  {m:"ds",t:"Pseudonymisation",d:"Replacing direct identifiers with codes; data still personal but less identifiable"},
-  {m:"ds",t:"Anonymisation",d:"Processing data so individuals cannot be identified; outside GDPR scope"},
-  {m:"ds",t:"Statistical analysis plan",d:"Pre-specified document describing the analysis before data are examined"},
-  {m:"ds",t:"Data visualisation",d:"Graphical representation of data to communicate patterns clearly to an audience"},
-  {m:"ds",t:"Version control (Git)",d:"Tracking changes to code over time; enables collaboration and rollback"},
-  {m:"sys",t:"Agile methodology",d:"Iterative development with short sprints, continuous feedback, and flexible scope"},
-  {m:"sys",t:"Waterfall methodology",d:"Sequential, phase-gated development; requirements fixed upfront"},
-  {m:"sys",t:"Requirements gathering",d:"Eliciting and documenting what a system must do (functional) and how (non-functional)"},
-  {m:"sys",t:"User story",d:"Short statement describing a feature from a user perspective: 'As a… I want…'"},
-  {m:"sys",t:"Acceptance criteria",d:"Conditions a system must satisfy for a user story/requirement to be accepted"},
-  {m:"sys",t:"System testing",d:"Evaluating whether an entire system meets its specified requirements"},
-  {m:"sys",t:"UAT",d:"User Acceptance Testing; end-users verify the system does what they need"},
-  {m:"sys",t:"HL7 / FHIR",d:"Healthcare interoperability standards enabling systems to exchange clinical data"},
-  {m:"sys",t:"DICOM",d:"Standard for storing and transmitting medical imaging data"},
-  {m:"sys",t:"Interoperability",d:"Ability of different systems to exchange and use information seamlessly"},
-  {m:"sys",t:"Enterprise architecture",d:"High-level design of an organisation's IT systems, data, and processes"},
-  {m:"sys",t:"Procurement (public sector)",d:"Legal process for buying goods/services; governed by PCR 2015 / NHS Act 2022"},
-  {m:"sys",t:"Risk register",d:"Document tracking identified risks, likelihood, impact, and mitigations"},
-  {m:"sys",t:"Business case",d:"Justification for a project including costs, benefits, risks, and alternatives"},
-  {m:"sys",t:"PRINCE2 / MSP",d:"Structured project and programme management frameworks used across NHS"},
-  {m:"pol",t:"NHS Long Term Plan",d:"10-year strategic plan for NHS transformation published in 2019"},
-  {m:"pol",t:"10 Year Health Plan",d:"2024 government strategy for reforming NHS delivery and workforce"},
-  {m:"pol",t:"NICE guidelines",d:"Evidence-based guidance on clinical practice and health technology appraisal"},
-  {m:"pol",t:"Digital maturity index",d:"NHS measure of how advanced trusts are in adopting digital tools"},
-  {m:"pol",t:"ICS (Integrated Care System)",d:"NHS and social care organisations in a region working together as one system"},
-  {m:"pol",t:"KPIs",d:"Key Performance Indicators — quantifiable measures of progress toward objectives"},
-  {m:"pol",t:"PESTLE analysis",d:"Framework scanning: Political, Economic, Social, Technical, Legal, Environmental"},
-  {m:"pol",t:"SWOT analysis",d:"Internal strengths/weaknesses and external opportunities/threats analysis"},
-  {m:"pol",t:"Stakeholder mapping",d:"Identifying who has interest or influence over a project; plotting power vs interest"},
-  {m:"pol",t:"Systems thinking",d:"Understanding a problem by examining the whole system, not just individual parts"},
-  {m:"pol",t:"Logic model",d:"Visual map of inputs → activities → outputs → outcomes → impact"},
-  {m:"pol",t:"Policy implementation gap",d:"Difference between what policy intends and what actually happens in practice"},
-  {m:"pol",t:"Value-based healthcare",d:"Organising care to maximise patient outcomes per pound spent"},
-  {m:"pol",t:"DSPT",d:"Data Security and Protection Toolkit — NHS annual self-assessment of data security"},
-  {m:"pol",t:"DTAC",d:"Digital Technology Assessment Criteria — NHS framework for evaluating digital health tools"},
-  {m:"dh",t:"Clinical Decision Support (CDS)",d:"Tools providing clinicians with knowledge and patient-specific information at point of care"},
-  {m:"dh",t:"SaMD",d:"Software as a Medical Device — software performing a medical purpose; regulated"},
-  {m:"dh",t:"UK MDR 2002 / 2024",d:"UK Medical Devices Regulations governing classification, safety, and market placement"},
-  {m:"dh",t:"Post-market surveillance",d:"Ongoing monitoring of a device's safety and performance after release"},
-  {m:"dh",t:"CE / UKCA marking",d:"Conformity marks showing a device meets EU / UK safety and performance requirements"},
-  {m:"dh",t:"Automation bias",d:"Over-reliance on automated recommendations, even when they are wrong"},
-  {m:"dh",t:"Alert fatigue",d:"Desensitisation to warnings due to high volume of false-positive alerts"},
-  {m:"dh",t:"NASSS framework",d:"Framework for assessing complexity in digital health implementation (Greenhalgh)"},
-  {m:"dh",t:"Computable knowledge",d:"Clinical knowledge encoded in machine-readable form (e.g. SNOMED CT, CDS hooks)"},
-  {m:"dh",t:"Implementation science",d:"Study of methods to promote adoption of evidence-based practices into routine care"},
-  {m:"dh",t:"Technology adoption model",d:"Framework (e.g. TAM, NPT) explaining uptake of new technologies"},
-  {m:"dh",t:"Clinical safety (DCB0129/0160)",d:"NHS standards requiring hazard analysis for health IT during development and deployment"},
-  {m:"dh",t:"Pharmacogenomics",d:"How genes affect drug response; enables personalised prescribing decisions"},
-  {m:"ai",t:"Supervised learning",d:"ML trained on labelled input-output pairs to predict outputs for new inputs"},
-  {m:"ai",t:"Unsupervised learning",d:"ML finding hidden patterns in unlabelled data (clustering, dimensionality reduction)"},
-  {m:"ai",t:"Sensitivity / recall",d:"Proportion of true positives correctly identified; important for screening tools"},
-  {m:"ai",t:"Specificity",d:"Proportion of true negatives correctly identified; important for ruling out disease"},
-  {m:"ai",t:"PPV / NPV",d:"Positive/Negative Predictive Value — depends on prevalence; critical for clinical use"},
-  {m:"ai",t:"AUC-ROC",d:"Area under the ROC curve; single-number summary of classifier discrimination"},
-  {m:"ai",t:"Overfitting",d:"Model learns training data too well; performs poorly on unseen data"},
-  {m:"ai",t:"Validation (external)",d:"Testing model performance on data from a different site/time than training data"},
-  {m:"ai",t:"Algorithmic bias",d:"Systematic error in model outputs due to biased training data or design choices"},
-  {m:"ai",t:"Fairness metrics",d:"Quantitative measures of whether model performance is equitable across subgroups"},
-  {m:"ai",t:"Explainability / XAI",d:"Methods making AI decisions interpretable to clinicians and patients"},
-  {m:"ai",t:"MHRA AI guidance",d:"UK regulator's framework for AI as a medical device; transparency, post-market monitoring"},
-  {m:"ai",t:"TRIPOD / PROBAST",d:"Reporting and risk-of-bias standards for prediction model studies"},
-  {m:"ai",t:"Transfer learning",d:"Using a model trained on one task as a starting point for a related task"},
-  {m:"ai",t:"Convolutional neural network",d:"Deep learning architecture particularly effective for image analysis tasks"},
-  {m:"ai",t:"Natural language processing",d:"AI techniques for understanding and generating human language from text or speech"},
-  {m:"ai",t:"Dimensionality reduction (PCA)",d:"Techniques to reduce variables while retaining most variance in the data"},
-  {m:"ai",t:"Calibration",d:"Degree to which predicted probabilities match actual observed frequencies"},
-  {m:"ai",t:"Data leakage",d:"When information from outside training set contaminates model, inflating performance"},
+  // ── PROFESSIONAL FOUNDATIONS ──────────────────────────────────────────────
+  {m:"prof",t:"Duty of candour",
+   d:"Statutory requirement under the Health and Social Care Act 2008 (Regulated Activities) Regulations 2014 to be open and honest with patients when things go wrong. Applies at organisational level (Regulation 20) and is reflected in professional obligations for individual registrants via HCPC codes.",
+   links:[{l:"CQC guidance",u:"https://www.cqc.org.uk/guidance-providers/regulations-enforcement/regulation-20-duty-candour"}]},
+
+  {m:"prof",t:"Duty of care",
+   d:"Common law obligation to take reasonable steps to avoid acts or omissions that could cause foreseeable harm to those you serve. For Clinical Scientists this applies to patients, colleagues, and data. Breaching it can lead to professional or legal consequences.",
+   links:[]},
+
+  {m:"prof",t:"HCPC Standards of Proficiency (SoP)",
+   d:"Updated September 2023. The threshold competencies every Clinical Scientist must meet to gain and maintain HCPC registration. Organised into generic (all professions) and profession-specific standards. The FYA directly assesses readiness against these standards at 'threshold entry' level.",
+   links:[{l:"HCPC SoP — Clinical Scientists",u:"https://www.hcpc-uk.org/standards/standards-of-proficiency/clinical-scientists/"},{l:"PDF 2023",u:"https://www.hcpc-uk.org/globalassets/resources/standards/standards-of-proficiency---clinical-scientists.pdf"}]},
+
+  {m:"prof",t:"HCPC Standards of Conduct, Performance & Ethics",
+   d:"Separate from SoP — these are the behavioural standards all HCPC registrants must meet. Updated version effective September 2024. Cover promoting and protecting service users' interests, communicating appropriately, maintaining fitness to practise, and raising concerns.",
+   links:[{l:"HCPC standards",u:"https://www.hcpc-uk.org/standards/standards-of-conduct-performance-and-ethics/"}]},
+
+  {m:"prof",t:"Academy for Healthcare Science (AHCS)",
+   d:"Professional body representing the healthcare science workforce. Oversees voluntary accreditation frameworks, the Good Scientific Practice (GSP) guide, and coordinates equivalence routes to registration alongside the HCPC.",
+   links:[{l:"AHCS",u:"https://www.ahcs.ac.uk/"}]},
+
+  {m:"prof",t:"Good Scientific Practice (GSP)",
+   d:"AHCS-published framework setting out the standards of behaviour and practice expected of healthcare scientists across four domains: professional values; communication; delegation and team-working; and maintaining professional performance. Underpins STP curriculum competencies.",
+   links:[{l:"AHCS GSP",u:"https://www.ahcs.ac.uk/registration/good-scientific-practice/"}]},
+
+  {m:"prof",t:"Scope of practice",
+   d:"The boundaries of what you are trained, competent, and authorised to do. As a threshold-entry Clinical Scientist you must recognise when tasks fall outside your scope and escalate appropriately rather than proceeding regardless.",
+   links:[]},
+
+  {m:"prof",t:"Fitness to practise",
+   d:"The combination of skills, knowledge, character, health, and behaviour needed to practise safely. HCPC can investigate and restrict or remove registration if fitness is impaired (e.g. misconduct, health issues, lack of competence).",
+   links:[{l:"HCPC FtP",u:"https://www.hcpc-uk.org/concerns/what-we-do/fitness-to-practise-explained/"}]},
+
+  {m:"prof",t:"Informed consent",
+   d:"A process, not just a signature. Patients must receive sufficient, understandable information to make a voluntary decision. Key principles: capacity (Mental Capacity Act 2005), voluntariness, and disclosure. Gillick competence applies for under-16s. Consent can be withdrawn at any time.",
+   links:[{l:"NHS consent guidance",u:"https://www.nhs.uk/conditions/consent-to-treatment/"}]},
+
+  {m:"prof",t:"Confidentiality & information governance",
+   d:"Obligation derived from common law, UK GDPR, DPA 2018, Caldicott Principles, and NHS Confidentiality Code of Practice. Information shared in confidence should only be disclosed with consent, legal authority, or genuine public interest justification.",
+   links:[{l:"NHS IG guidance",u:"https://digital.nhs.uk/data-and-information/looking-after-information/data-security-and-information-governance"}]},
+
+  {m:"prof",t:"Caldicott Principles",
+   d:"Eight principles (updated 2020) governing use of patient-identifiable data in health and social care: (1) justify purpose, (2) use only when necessary, (3) minimum necessary, (4) access on need-to-know basis, (5) everyone understands their responsibilities, (6) comply with law, (7) duty to share can be as important as duty to protect, (8) inform patients.",
+   links:[{l:"National Data Guardian",u:"https://www.gov.uk/government/organisations/national-data-guardian"}]},
+
+  {m:"prof",t:"Protected characteristics",
+   d:"Nine characteristics protected under the Equality Act 2010: age, disability, gender reassignment, marriage and civil partnership, pregnancy and maternity, race, religion or belief, sex, and sexual orientation. Clinical Scientists have a duty to avoid discrimination and promote equality in practice.",
+   links:[{l:"Equality Act 2010",u:"https://www.legislation.gov.uk/ukpga/2010/15/contents"}]},
+
+  {m:"prof",t:"Unconscious bias",
+   d:"Automatic, implicit associations that can affect clinical, hiring, or analytical decisions without awareness. Particularly relevant to AI systems where training data encodes historical biases. Mitigation requires structured processes, diverse teams, and deliberate checking.",
+   links:[]},
+
+  {m:"prof",t:"Reflective practice",
+   d:"Systematic thinking about professional experience to improve future performance. Common frameworks: Gibbs Reflective Cycle (1988) — description, feelings, evaluation, analysis, conclusion, action plan. Schön's reflection-in-action vs reflection-on-action. Central to OneFile portfolio and STP evidence.",
+   links:[]},
+
+  {m:"prof",t:"CPD (Continuing Professional Development)",
+   d:"HCPC requires all registrants to undertake and record CPD across five standards: maintaining a CPD profile, demonstrating activities are a mixture of learning, show these contribute to quality of practice, benefit service users, and present a written profile if audited.",
+   links:[{l:"HCPC CPD",u:"https://www.hcpc-uk.org/cpd/"}]},
+
+  {m:"prof",t:"NHS Constitution",
+   d:"Sets out NHS values, rights for patients, public and staff, and pledges. Seven NHS values: working together for patients, respect and dignity, commitment to quality of care, compassion, improving lives, everyone counts. Legally, NHS bodies must have regard to it.",
+   links:[{l:"NHS Constitution",u:"https://www.gov.uk/government/publications/the-nhs-constitution-for-england"}]},
+
+  {m:"prof",t:"Safeguarding",
+   d:"Protecting children and adults at risk from abuse, neglect, or exploitation. Relevant legislation: Children Act 1989/2004, Care Act 2014, Mental Capacity Act 2005. Clinical Scientists have a duty to raise concerns via their organisation's safeguarding lead and must not ignore warning signs.",
+   links:[]},
+
+  {m:"prof",t:"Clinical governance",
+   d:"Introduced in 1998 (First Class Service white paper). The system through which NHS trusts are accountable for continuously improving quality and safeguarding standards. Encompasses clinical audit, risk management, education, research, openness, and patient involvement.",
+   links:[]},
+
+  {m:"prof",t:"Audit cycle",
+   d:"Systematic quality improvement process: (1) select topic, (2) set criteria/standards, (3) collect data, (4) compare to standard, (5) implement change, (6) re-audit. Must close the loop — re-audit is non-negotiable. Differs from research: audit asks 'are we meeting the standard?' not 'what is the standard?'",
+   links:[]},
+
+  {m:"prof",t:"PDSA cycle",
+   d:"Plan-Do-Study-Act. Iterative quality improvement methodology from Deming. Useful for small-scale testing of change ideas before wider implementation. Multiple PDSA cycles build evidence for change. Common in NHS improvement programmes (e.g. NHS England QSIR).",
+   links:[]},
+
+  {m:"prof",t:"Root cause analysis (RCA)",
+   d:"Structured method for investigating incidents to identify underlying causes rather than symptoms. Tools include: fishbone/Ishikawa diagram, 5 Whys, fault tree analysis. Output should be an action plan preventing recurrence, not blame attribution.",
+   links:[]},
+
+  {m:"prof",t:"Risk management",
+   d:"Identify → assess (likelihood × impact) → control → monitor. NHS uses risk registers typically scored 1–5 for likelihood and impact. Mandatory reporting of serious incidents via STEIS/LFPSE (Learning from Patient Safety Events). CQC inspects risk management processes.",
+   links:[]},
+
+  {m:"prof",t:"Lean / Six Sigma",
+   d:"Lean (Toyota Production System): remove non-value-adding waste (MUDA) — waiting, overproduction, transport, defects, inventory, motion, over-processing. Six Sigma: reduce process variation using DMAIC (Define, Measure, Analyse, Improve, Control). Used together as Lean Six Sigma in NHS improvement.",
+   links:[]},
+
+  {m:"prof",t:"Change management (Kotter's model)",
+   d:"Kotter's 8-step model: create urgency → build coalition → form vision → communicate vision → empower action → quick wins → sustain acceleration → anchor change. Also relevant: Lewin's unfreeze-change-refreeze; ADKAR (awareness, desire, knowledge, ability, reinforcement).",
+   links:[]},
+
+  {m:"prof",t:"Patient autonomy",
+   d:"Right of a competent adult to make decisions about their own care, including refusing treatment. Flows from the principle of respect for persons in biomedical ethics (Beauchamp & Childress: autonomy, beneficence, non-maleficence, justice). Mental Capacity Act 2005 provides legal framework where capacity is in question.",
+   links:[]},
+
+  {m:"prof",t:"Health inequalities",
+   d:"Avoidable, unfair differences in health status or distribution of health determinants between groups. NHS commitment via Core20PLUS5 (targeting most deprived 20% and clinical priorities). Clinical Scientists must consider whether algorithms or datasets embed or exacerbate health inequalities.",
+   links:[{l:"Core20PLUS5",u:"https://www.england.nhs.uk/about/equality/equality-hub/national-healthcare-inequalities-improvement-programme/core20plus5/"}]},
+
+  {m:"prof",t:"Social determinants of health",
+   d:"Non-medical factors that influence health outcomes: income, education, employment, housing, social support, environment. Marmot Review (2010, updated 2020) evidences these as key drivers of health inequalities in England. Relevant when designing population-level digital health tools.",
+   links:[]},
+
+  {m:"prof",t:"ISO 13485",
+   d:"International standard for quality management systems in medical device manufacture and related services. Requires documented procedures, traceability, post-market surveillance, and CAPA. Many NHS clinical computing teams (e.g. CSC GSTT) hold ISO 13485 certification.",
+   links:[{l:"ISO 13485",u:"https://www.iso.org/standard/59752.html"}]},
+
+  {m:"prof",t:"CAPA (Corrective and Preventive Action)",
+   d:"A systematic process within a QMS for investigating non-conformities, identifying root causes, and implementing actions to prevent recurrence (corrective) or potential problems (preventive). Required under ISO 13485 and FDA 21 CFR Part 820. Documented and tracked in a QMS.",
+   links:[]},
+
+  // ── DATA SCIENCE & ENGINEERING ─────────────────────────────────────────────
+  {m:"ds",t:"UK GDPR & DPA 2018",
+   d:"UK retained version of GDPR post-Brexit, supplemented by the Data Protection Act 2018. Establishes six lawful bases for processing personal data (consent, contract, legal obligation, vital interests, public task, legitimate interests). Health data is 'special category' requiring additional conditions under Article 9.",
+   links:[{l:"ICO GDPR guide",u:"https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/"}]},
+
+  {m:"ds",t:"Caldicott Guardian",
+   d:"Senior NHS person responsible for protecting the confidentiality of patient and service-user information and enabling appropriate information sharing. Each NHS organisation must have one. Appointed by the organisation's board, accountable to the Chief Executive.",
+   links:[]},
+
+  {m:"ds",t:"Data Protection Officer (DPO)",
+   d:"Mandatory appointment under UK GDPR for organisations processing special category data at scale. Advises on compliance, monitors adherence, and is the contact point for the ICO. Must have expert knowledge of data protection law and practice.",
+   links:[]},
+
+  {m:"ds",t:"Pseudonymisation vs anonymisation",
+   d:"Pseudonymisation replaces direct identifiers with a code — data can be re-linked with a key, so it remains personal data under GDPR but with reduced risk. Anonymisation removes all identifiers so re-identification is not reasonably possible — falls outside GDPR scope. In practice, health data is rarely truly anonymous.",
+   links:[]},
+
+  {m:"ds",t:"Secure Data Environment (SDE)",
+   d:"NHS approach to data access replacing bulk data transfers. Researchers access data within a controlled environment; only aggregated, checked outputs leave (Five Safes framework). NHS Research SDE Network provides national infrastructure for population-level research.",
+   links:[{l:"NHS SDE",u:"https://digital.nhs.uk/coronavirus/coronavirus-data-services-updates/trusted-research-environments"}]},
+
+  {m:"ds",t:"Five Safes framework",
+   d:"Framework for assessing privacy risks in data access: safe people (authorised researchers), safe projects (approved public benefit), safe settings (controlled access environment), safe outputs (no disclosive outputs), safe data (de-identified data). Underpins NHS SDE policy.",
+   links:[]},
+
+  {m:"ds",t:"NHS Federated Data Platform (FDP)",
+   d:"£330m NHS England platform (rolling out from April 2024) that links operational data already held in NHS systems — waiting lists, theatres, beds — making it accessible in one secure environment. Operates at national, ICB, and trust levels. Palantir-built. Distinct from the Research SDE Network.",
+   links:[{l:"NHS FDP",u:"https://www.england.nhs.uk/digitaltechnology/nhs-federated-data-platform/"}]},
+
+  {m:"ds",t:"Data wrangling",
+   d:"The process of cleaning, structuring, and enriching raw data into a usable format. Steps: ingest → assess quality → handle missing values → resolve inconsistencies → reshape/join → validate. Critical to ensure analysis is reproducible and fit-for-purpose. Tools: pandas, tidyverse (R), dbt.",
+   links:[]},
+
+  {m:"ds",t:"Data linkage",
+   d:"Joining records from different datasets to create a longitudinal patient view across care settings. Techniques: deterministic (exact key matching) and probabilistic (e.g. Fellegi-Sunter). Requires governance approval, data sharing agreements, and careful de-duplication. Used in HES linkage, OpenSAFELY.",
+   links:[]},
+
+  {m:"ds",t:"Reproducible research",
+   d:"Practices ensuring analytical results can be independently verified: version-controlled code (Git), documented environments (e.g. requirements.txt, Docker), open data where possible, pre-registration of analysis plans. FAIR principles (Findable, Accessible, Interoperable, Reusable) apply to health data and code.",
+   links:[]},
+
+  {m:"ds",t:"Hypothesis testing",
+   d:"Formal statistical procedure: state null (H₀) and alternative (H₁) hypotheses; choose test and significance level (α, commonly 0.05); compute test statistic; derive p-value; accept or reject H₀. Key: p-value is not the probability the null is true — it is the probability of the observed result if the null were true.",
+   links:[]},
+
+  {m:"ds",t:"p-value & statistical significance",
+   d:"Probability of observing a result as extreme as the data (or more so) if the null hypothesis were true. p < α → reject H₀. Often misinterpreted. Small p-value ≠ large effect. Statistical significance ≠ clinical significance. Consider alongside effect size, confidence intervals, and sample size.",
+   links:[]},
+
+  {m:"ds",t:"Confidence interval (CI)",
+   d:"A range of values, derived from sample data, that will contain the true population parameter a stated proportion of the time (e.g. 95%) under repeated sampling. Wider CI = more uncertainty. Non-overlapping 95% CIs roughly indicate significant difference. More informative than p-values alone.",
+   links:[]},
+
+  {m:"ds",t:"Regression modelling",
+   d:"Statistical method quantifying relationships between an outcome and one or more predictors. Linear regression for continuous outcomes; logistic regression for binary outcomes (outputs odds ratios); Cox proportional hazards for time-to-event. Assumptions must be checked (linearity, independence, homoscedasticity, normality of residuals).",
+   links:[]},
+
+  {m:"ds",t:"Confounding",
+   d:"A variable associated with both the exposure and the outcome, distorting the apparent causal relationship. Can be controlled in design (randomisation, restriction, matching) or analysis (stratification, multivariable regression, propensity score methods). Unmeasured confounding is a key limitation of observational studies.",
+   links:[]},
+
+  {m:"ds",t:"Causal inference",
+   d:"Methods to estimate the causal effect of an exposure, accounting for confounding. Designs: RCTs (gold standard), instrumental variable analysis, difference-in-differences, regression discontinuity, propensity score matching. Mendelian randomisation uses genetic variants as instruments.",
+   links:[]},
+
+  {m:"ds",t:"Statistical analysis plan (SAP)",
+   d:"Pre-specified, timestamped document describing all planned analyses before data are examined. Prevents HARKing (Hypothesising After Results are Known) and selective reporting. Required for clinical trials; best practice for all NHS research and service evaluations.",
+   links:[]},
+
+  {m:"ds",t:"SNOMED CT",
+   d:"Systematized Nomenclature of Medicine Clinical Terms. The NHS mandated clinical terminology for electronic health records (required in primary care from 2018, secondary care from 2020). Provides a consistent, machine-readable language for diagnoses, procedures, and findings. Supports data linkage and CDS.",
+   links:[{l:"NHS SNOMED CT",u:"https://digital.nhs.uk/services/terminology-and-classifications/snomed-ct"}]},
+
+  {m:"ds",t:"ICD-10 / ICD-11",
+   d:"International Classification of Diseases (WHO). ICD-10 is the current NHS standard for coding diagnoses in secondary care (used in HES, SUS). ICD-11 is the updated version being adopted internationally. Distinct from SNOMED CT — ICD is used for billing/stats; SNOMED for clinical records.",
+   links:[]},
+
+  {m:"ds",t:"Hospital Episode Statistics (HES)",
+   d:"Database of admitted patient care, outpatient, and A&E episodes in NHS hospitals in England. Held by NHS England. Used for commissioning, performance management, epidemiological research. Accessed via NHS England IG processes or via the SDE network.",
+   links:[{l:"HES",u:"https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics"}]},
+
+  {m:"ds",t:"Data governance",
+   d:"Policies, processes, roles and standards ensuring data is accurate, available, consistent, and secure. In NHS: Information Governance (IG) framework; Data Access Request Service (DARS); DSPT annual self-assessment; local information governance committees. Covers data quality, access control, and lifecycle management.",
+   links:[]},
+
+  {m:"ds",t:"Version control (Git/GitHub)",
+   d:"Tracking changes to code over time enabling collaboration, rollback, and auditability. Core concepts: repositories, commits, branches, pull requests, merges. GitHub adds remote hosting and collaboration features. Essential for reproducible research and QMS-compliant software development in clinical settings.",
+   links:[]},
+
+  // ── SYSTEMS DEVELOPMENT ───────────────────────────────────────────────────
+  {m:"sys",t:"Agile (Scrum / Kanban)",
+   d:"Iterative development framework with short cycles (sprints, typically 2 weeks). Scrum roles: Product Owner, Scrum Master, Development Team. Artefacts: product backlog, sprint backlog, increment. Kanban uses a continuous flow board. Agile suits evolving requirements; Waterfall suits fixed-scope regulated projects.",
+   links:[{l:"Agile Manifesto",u:"https://agilemanifesto.org/"}]},
+
+  {m:"sys",t:"Waterfall methodology",
+   d:"Sequential, phase-gated development: requirements → design → build → test → deploy → maintain. Each phase must complete before the next begins. Suits projects with stable, well-understood requirements (e.g. regulated SaMD) but poorly accommodates change mid-project.",
+   links:[]},
+
+  {m:"sys",t:"Requirements gathering",
+   d:"Eliciting, analysing, and documenting what a system must do. Functional requirements (what it does) vs non-functional requirements (how it performs — speed, security, usability). Techniques: interviews, workshops, observation, use cases, user stories. Output: requirements specification document.",
+   links:[]},
+
+  {m:"sys",t:"User story / acceptance criteria",
+   d:"User story format: 'As a [role] I want [feature] so that [benefit].' Acceptance criteria define the conditions that must be met for the story to be accepted. Together they form the basis of sprint planning and system testing in Agile.",
+   links:[]},
+
+  {m:"sys",t:"HL7 v2 / HL7 FHIR",
+   d:"Health Level 7 messaging standards. HL7 v2 is the legacy NHS messaging standard (pipe-delimited text messages for orders, results, ADT). FHIR (Fast Healthcare Interoperability Resources) is the modern RESTful API-based standard, enabling real-time data exchange. NHS API catalogue is FHIR-first.",
+   links:[{l:"NHS FHIR API catalogue",u:"https://digital.nhs.uk/developer/api-catalogue"}]},
+
+  {m:"sys",t:"DICOM",
+   d:"Digital Imaging and Communications in Medicine. The standard for storing, transmitting, and processing medical imaging data (X-ray, CT, MRI). Images are stored with embedded metadata (patient ID, acquisition parameters). PACS systems use DICOM. XNAT is a popular DICOM-compliant research platform.",
+   links:[]},
+
+  {m:"sys",t:"SNOMED CT / LOINC / dm+d",
+   d:"Key NHS clinical coding standards: SNOMED CT for clinical findings/procedures, LOINC for laboratory and clinical observations, dm+d (dictionary of medicines and devices) for prescribing. Consistent use is essential for interoperability and data quality.",
+   links:[]},
+
+  {m:"sys",t:"Interoperability",
+   d:"Ability of systems to exchange and use information: syntactic (same format), semantic (same meaning), organisational (governance agreements). NHS Interoperability standards set by NHS England. IHE XDS/XCA profiles, OpenEHR archetypes, and FHIR R4 are key frameworks.",
+   links:[{l:"NHS interoperability",u:"https://www.england.nhs.uk/digitaltechnology/connecteddigitalsystems/interoperability/"}]},
+
+  {m:"sys",t:"Electronic Health Record (EHR / EPR)",
+   d:"Digital system for recording patient clinical information. Epic, Cerner (now Oracle Health), and System C are common NHS EPR vendors. Epic Clarity (operational) and Caboodle (analytical data warehouse) are the reporting layers. EPR implementation is a major change management and systems development challenge.",
+   links:[]},
+
+  {m:"sys",t:"Enterprise architecture",
+   d:"High-level view of an organisation's business processes, IT systems, data, and technology. Frameworks: TOGAF (most common), Zachman. NHS uses Local Health and Care Record (LHCR) architecture. Relevant when evaluating system procurement options and their integration implications.",
+   links:[]},
+
+  {m:"sys",t:"Public sector procurement (PCR 2015 / HSE 2022)",
+   d:"Regulated process for buying goods/services with public money. PCR 2015 (implementing EU Directives) governs NHS procurement for most contracts. Health Services (EU Exit) regulations apply to NHS-specific services post-Brexit. Thresholds apply: above-threshold contracts require OJEU/Find a Tender advertisement. Key principles: transparency, equal treatment, proportionality.",
+   links:[]},
+
+  {m:"sys",t:"Business case (NHS five case model)",
+   d:"NHS standard for investment decisions: strategic case (why), economic case (value for money, options appraisal), commercial case (procurement approach), financial case (affordability), management case (deliverability). Required for significant IT procurements and capital investments.",
+   links:[]},
+
+  {m:"sys",t:"Risk register",
+   d:"Living document tracking identified risks with: description, owner, likelihood (1–5), impact (1–5), risk score, current controls, residual risk, and planned mitigations. Reviewed regularly and escalated when thresholds are breached. Core governance document for any system development project.",
+   links:[]},
+
+  {m:"sys",t:"DCB0129 / DCB0160",
+   d:"NHS Digital Clinical Safety standards. DCB0129: Clinical Risk Management for manufacturers of health IT systems. DCB0160: Clinical Risk Management for NHS organisations deploying health IT. Together they require clinical risk assessments, hazard logs, and Clinical Safety Officers (CSOs) during development and deployment.",
+   links:[{l:"DCB0129",u:"https://digital.nhs.uk/data-and-information/information-standards/information-standards-and-data-collections-including-extractions/publications-and-notifications/standards-and-collections/dcb0129-clinical-risk-management-its-application-in-the-manufacture-of-health-it-systems"},{l:"DCB0160",u:"https://digital.nhs.uk/data-and-information/information-standards/information-standards-and-data-collections-including-extractions/publications-and-notifications/standards-and-collections/dcb0160-clinical-risk-management-its-application-in-the-deployment-and-use-of-health-it-systems"}]},
+
+  {m:"sys",t:"PRINCE2 / MSP",
+   d:"Structured frameworks: PRINCE2 (Projects IN Controlled Environments) for individual projects; MSP (Managing Successful Programmes) for portfolios of related projects. PRINCE2 organises work into stages with defined roles (Project Board, Project Manager, senior users). Widely used in NHS capital and IT programmes.",
+   links:[]},
+
+  // ── POLICY & STRATEGY ─────────────────────────────────────────────────────
+  {m:"pol",t:"NHS Long Term Plan (2019)",
+   d:"Ten-year strategy for NHS transformation: prevention, primary/community care, digital first, mental health, and cancer. Committed to Universal NHS WiFi, digital outpatient appointments, and clinical decision support deployment. Context for many current NHS digital programmes.",
+   links:[{l:"NHS Long Term Plan",u:"https://www.longtermplan.nhs.uk/"}]},
+
+  {m:"pol",t:"10 Year Health Plan (2025)",
+   d:"Government's updated strategic framework for NHS reform. Three shifts: hospital to community, analogue to digital, treatment to prevention. Emphasises AI, data, and digital tools as enablers. Context for NHS FDP, Federated Analytics, and AI regulation debates.",
+   links:[{l:"DHSC",u:"https://www.gov.uk/government/publications/10-year-health-plan-for-england"}]},
+
+  {m:"pol",t:"Data Saves Lives (2022)",
+   d:"NHS England data strategy. Commitments: secure data environments replacing bulk transfers, NHS data standards, federated analytics, public trust, and workforce digital skills. Directly influenced SDE policy and FDP development.",
+   links:[{l:"Data Saves Lives",u:"https://www.gov.uk/government/publications/data-saves-lives-reshaping-health-and-social-care-with-data"}]},
+
+  {m:"pol",t:"DSPT (Data Security & Protection Toolkit)",
+   d:"Annual NHS self-assessment against the ten National Data Guardian standards for data security. Mandatory for all organisations accessing NHS patient data. Scores: Standards Not Met / Standards Met / Standards Exceeded. Failure affects data access agreements.",
+   links:[{l:"DSPT",u:"https://www.dsptoolkit.nhs.uk/"}]},
+
+  {m:"pol",t:"DTAC (Digital Technology Assessment Criteria)",
+   d:"NHS England framework for evaluating digital health products procured by the NHS. Six domains: clinical safety, data protection, technical security, interoperability, usability and accessibility, and equality/inclusion. Required for products entering NHS procurement. Replaced ORCHA/DCB-only assessments.",
+   links:[{l:"DTAC",u:"https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/directions-and-data-provision-notices/data-provision-notices-dpns/digital-technology-assessment-criteria"}]},
+
+  {m:"pol",t:"ICS (Integrated Care System)",
+   d:"Statutory NHS structure from July 2022 (Health and Care Act 2022). Each ICS comprises an Integrated Care Board (ICB, responsible for NHS commissioning) and an Integrated Care Partnership (ICP, statutory joint committee with local authority). Aim: joined-up care across health and social care in a region.",
+   links:[{l:"NHS ICS",u:"https://www.england.nhs.uk/integratedcare/what-is-integrated-care/"}]},
+
+  {m:"pol",t:"NICE (guidelines & HTA)",
+   d:"National Institute for Health and Care Excellence. Produces clinical guidelines (evidence-based practice recommendations), technology appraisals (cost-effectiveness of drugs/devices), and diagnostic guidance. NICE Evidence Standards Framework for Digital Health Technologies guides evaluation of DHTs.",
+   links:[{l:"NICE",u:"https://www.nice.org.uk/"},{l:"NICE DHT framework",u:"https://www.nice.org.uk/about/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies"}]},
+
+  {m:"pol",t:"CQC (Care Quality Commission)",
+   d:"Independent regulator of health and social care in England. Inspects organisations against five domains: safe, effective, caring, responsive, well-led. Ratings: Outstanding / Good / Requires Improvement / Inadequate. Digital and data systems increasingly scrutinised in inspections.",
+   links:[{l:"CQC",u:"https://www.cqc.org.uk/"}]},
+
+  {m:"pol",t:"Digital maturity index",
+   d:"NHS England assessment of how advanced NHS organisations are in adopting and using digital technologies. Components include clinical and operational systems, infrastructure, and data/analytics capability. Used for benchmarking and targeting support and investment.",
+   links:[]},
+
+  {m:"pol",t:"Systems thinking",
+   d:"Understanding a problem by examining the whole system — relationships, feedback loops, and emergent behaviours — rather than isolated components. Tools: causal loop diagrams, rich pictures, soft systems methodology (Checkland). Particularly relevant to understanding why IT implementations fail when sociotechnical factors are ignored.",
+   links:[]},
+
+  {m:"pol",t:"Stakeholder analysis",
+   d:"Identifying all parties with an interest in or influence over a project. Power/interest grid: keep satisfied (high power, low interest), manage closely (high power, high interest), monitor (low power, low interest), keep informed (low power, high interest). Essential for change management and EPR implementations.",
+   links:[]},
+
+  {m:"pol",t:"Value-based healthcare",
+   d:"Framework (Porter & Teisberg) organising care to maximise patient outcomes achieved per pound spent. NHS QIPP (Quality, Innovation, Productivity, Prevention) programmes. Outcomes measured via PROMs (Patient Reported Outcome Measures). Relevant to health economics and service evaluation.",
+   links:[]},
+
+  {m:"pol",t:"Health Economics (QALY / ICER)",
+   d:"QALY = Quality-Adjusted Life Year: combines quantity and quality of life. ICER = Incremental Cost-Effectiveness Ratio: additional cost per additional QALY. NICE threshold: typically £20,000–£30,000/QALY. Used to decide whether NHS should fund new technologies. Relevant to DHT and AI evaluation.",
+   links:[]},
+
+  {m:"pol",t:"PESTLE / SWOT analysis",
+   d:"PESTLE: macro-environment scan (Political, Economic, Social, Technical, Legal, Environmental). SWOT: internal Strengths and Weaknesses, external Opportunities and Threats. Used together in strategic planning, service redesign, and procurement decision-making.",
+   links:[]},
+
+  // ── DIGITAL HEALTH & CDS ──────────────────────────────────────────────────
+  {m:"dh",t:"SaMD (Software as a Medical Device)",
+   d:"Software that performs a medical purpose without being part of a physical device. Regulated in UK under UK MDR 2002 and MHRA guidance. Classification (I–IIa–IIb–III) depends on risk to patient. AI-based diagnostic tools are typically Class IIa or IIb. Requires a Technical File and, for higher risk, a Notified Body review.",
+   links:[{l:"MHRA SaMD",u:"https://www.gov.uk/government/publications/software-and-artificial-intelligence-ai-as-a-medical-device-change-programme"},{l:"MHRA AI roadmap",u:"https://www.gov.uk/government/publications/software-and-ai-as-a-medical-device-change-programme-roadmap"}]},
+
+  {m:"dh",t:"UK MDR 2002 & 2024 PMS Amendment",
+   d:"UK Medical Devices Regulations 2002 (as amended) are the primary statutory instrument for medical device regulation post-Brexit. 2024 amendments strengthened post-market surveillance (PMS) requirements and mandated Unique Device Identifiers (UDI). MHRA is the UK competent authority. UKCA marking replacing CE marking for new devices.",
+   links:[{l:"MHRA devices",u:"https://www.gov.uk/topic/medicines-medical-devices-blood/medical-devices-regulation-safety"}]},
+
+  {m:"dh",t:"Post-market surveillance (PMS)",
+   d:"Ongoing collection, analysis, and use of data on a device's performance after market release. Required under UK MDR 2002 (as amended). Includes: vigilance (serious incidents), post-market clinical follow-up (PMCF), periodic safety update reports (PSURs). For AI/SaMD, monitoring for performance drift is critical.",
+   links:[]},
+
+  {m:"dh",t:"UKCA / CE marking",
+   d:"UKCA (UK Conformity Assessed) mark required for medical devices placed on the UK (Great Britain) market from July 2025. CE mark (EU) still accepted under transition arrangements. CE marking requires conformity assessment against EU MDR 2017/745. Demonstrates device meets essential requirements for safety and performance.",
+   links:[]},
+
+  {m:"dh",t:"Clinical Decision Support (CDS)",
+   d:"Tools providing clinicians with knowledge and patient-specific information at point of care to enhance decisions. Types: active (interruptive alerts, order sets) vs passive (reference, documentation support). Knowledge-based vs non-knowledge-based (ML-driven). Evaluated via clinical utility, usability, patient outcomes, and workflow integration.",
+   links:[]},
+
+  {m:"dh",t:"Automation bias",
+   d:"Tendency to over-rely on automated system recommendations even when they conflict with clinical judgement or are incorrect. Risk increases when alerts are frequent and mostly correct (lulling effect). Mitigation: appropriate alert thresholds, user training, transparency about tool limitations, and 'human in the loop' design.",
+   links:[]},
+
+  {m:"dh",t:"Alert fatigue",
+   d:"Desensitisation to clinical decision support alerts due to high volume, poor specificity, or lack of clinical relevance. Leads to alert override without engagement. Associated with missed critical alerts and patient harm. Interventions: tiering alerts by urgency, reducing low-value alerts, contextualising alerts.",
+   links:[]},
+
+  {m:"dh",t:"NASSS framework",
+   d:"Nonadoption, Abandonment, Scale-up, Spread, and Sustainability framework (Greenhalgh et al., 2017). Assesses complexity across seven domains: condition, technology, value proposition, adopter system, organisation, wider environment, and embedding/adaptation over time. Predicts failure points in digital health implementation.",
+   links:[{l:"NASSS paper",u:"https://doi.org/10.2196/jmir.7785"}]},
+
+  {m:"dh",t:"Technology adoption (TAM / NPT)",
+   d:"Technology Acceptance Model (Davis, 1989): perceived usefulness and perceived ease of use drive adoption intention. Normalisation Process Theory (May & Finch, 2009): examines how interventions become routinely embedded — coherence, cognitive participation, collective action, reflexive monitoring.",
+   links:[]},
+
+  {m:"dh",t:"Implementation science",
+   d:"Scientific study of methods to promote systematic uptake of evidence-based practices into routine care. Key frameworks: CFIR (Consolidated Framework for Implementation Research), PRISM, RE-AIM. Distinct from quality improvement — focuses on the 'how' of translating evidence into practice.",
+   links:[]},
+
+  {m:"dh",t:"NHS NICE Evidence Standards Framework (DHT)",
+   d:"Tiered framework for evaluating digital health technologies: Tier A (system-level benefits), Tier B (patient health outcomes), Tier C (patient health-related quality of life). Higher tiers require stronger evidence. Used by commissioners, App Library, and NHS procurement teams.",
+   links:[{l:"NICE DHT framework",u:"https://www.nice.org.uk/about/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies"}]},
+
+  {m:"dh",t:"Pharmacogenomics",
+   d:"Study of how genetic variants influence drug response (metabolism, efficacy, toxicity). Enables personalised prescribing. Example: CYP2C19 variants affecting clopidogrel and certain SSRIs. CDS tools can incorporate pharmacogenomic data to flag drug-gene interactions at point of prescribing.",
+   links:[]},
+
+  {m:"dh",t:"Computer-aided diagnosis (CADx)",
+   d:"AI/algorithmic systems that analyse medical images or data to suggest diagnoses, reducing human error and interpretation variability. Examples: mammography screening (Mia), chest X-ray triage, pathology slide analysis. Performance must be validated in target populations; bias evaluation is essential.",
+   links:[]},
+
+  // ── ARTIFICIAL INTELLIGENCE ───────────────────────────────────────────────
+  {m:"ai",t:"Supervised vs unsupervised learning",
+   d:"Supervised: model trained on labelled input-output pairs (classification, regression). Unsupervised: model finds structure in unlabelled data (clustering with k-means/DBSCAN, dimensionality reduction with PCA/UMAP). Semi-supervised uses small labelled set with large unlabelled set — common in medical imaging.",
+   links:[]},
+
+  {m:"ai",t:"Sensitivity, specificity, PPV, NPV",
+   d:"Sensitivity (recall) = TP/(TP+FN): proportion of true cases detected. Specificity = TN/(TN+FP): proportion of true negatives correctly identified. PPV = TP/(TP+FP): of positives, how many are true. NPV = TN/(TN+FN): of negatives, how many are true. PPV and NPV depend on disease prevalence — critical for clinical use.",
+   links:[]},
+
+  {m:"ai",t:"AUC-ROC",
+   d:"Area Under the Receiver Operating Characteristic curve. Plots sensitivity vs (1-specificity) across all classification thresholds. AUC = 1.0 is perfect; 0.5 is random. A single threshold must be selected for clinical use — choice depends on the relative cost of false positives vs false negatives.",
+   links:[]},
+
+  {m:"ai",t:"Calibration",
+   d:"Whether predicted probabilities match observed event frequencies. A well-calibrated model predicting 70% probability should be correct ~70% of the time. Assessed with calibration plots and Brier score. Often neglected in model evaluation but critical for clinical decision-making (e.g. risk scores).",
+   links:[]},
+
+  {m:"ai",t:"Overfitting & generalisation",
+   d:"Overfitting: model learns training data noise rather than the underlying pattern, performing well in-sample but poorly on new data. Mitigation: cross-validation, regularisation (L1/L2), dropout (neural networks), more data. Generalisation is assessed via temporal or external (different site) validation.",
+   links:[]},
+
+  {m:"ai",t:"External validation",
+   d:"Testing model performance on data from a different time period (temporal validation) or different institution (geographic validation) from the training set. Minimum requirement before clinical deployment. Performance typically degrades — the magnitude of degradation reveals brittleness.",
+   links:[]},
+
+  {m:"ai",t:"Algorithmic bias & fairness",
+   d:"Systematic errors in model outputs arising from biased training data, proxy variables, or underrepresentation of subgroups. Can exacerbate health inequalities. Fairness metrics: demographic parity, equalised odds, individual fairness. No single metric satisfies all — choice depends on context and ethical priorities.",
+   links:[]},
+
+  {m:"ai",t:"Explainability / XAI",
+   d:"Methods to make AI model predictions interpretable. Global (how does the model work overall): feature importance, SHAP summary plots. Local (why did the model make this specific prediction): LIME, SHAP force plots, attention maps for images. Regulators (MHRA, EU AI Act) increasingly require explainability for high-risk AI.",
+   links:[]},
+
+  {m:"ai",t:"MHRA AI / SaMD guidance",
+   d:"MHRA's Software and AI as a Medical Device Change Programme sets out the regulatory roadmap. Key document: 'A proposed approach to pre-market evaluation of software and AI medical devices' (2021). Emphasises transparency, robustness, real-world performance monitoring, and predetermined change control plans (PCCP) for adaptive AI.",
+   links:[{l:"MHRA AI roadmap",u:"https://www.gov.uk/government/publications/software-and-artificial-intelligence-ai-as-a-medical-device-change-programme"}]},
+
+  {m:"ai",t:"EU AI Act (2024) — relevance to NHS",
+   d:"World's first comprehensive AI regulation, in force from August 2024 with phased application. Classifies AI by risk (unacceptable → high → limited → minimal). Medical AI is automatically 'high risk' requiring conformity assessment, transparency, human oversight, and post-market monitoring. Relevant for UK organisations selling to EU or benchmark-setting.",
+   links:[{l:"EU AI Act",u:"https://artificialintelligenceact.eu/"}]},
+
+  {m:"ai",t:"TRIPOD / TRIPOD-AI",
+   d:"Transparent Reporting of a multivariable prediction model for Individual Prognosis Or Diagnosis. TRIPOD+AI (2024) extends to AI/ML models. 27-item checklist covering: data, participants, outcomes, model development, performance, and interpretation. Required by major journals; good practice for NHS evaluation reports.",
+   links:[{l:"TRIPOD",u:"https://www.tripod-statement.org/"}]},
+
+  {m:"ai",t:"PROBAST",
+   d:"Prediction model Risk Of Bias Assessment Tool. Assesses risk of bias and applicability of prediction model studies across four domains: participants, predictors, outcome, and analysis. Used in systematic reviews and critical appraisal of AI/ML studies. Complements TRIPOD.",
+   links:[{l:"PROBAST",u:"https://www.probast.org/"}]},
+
+  {m:"ai",t:"Data leakage",
+   d:"When information from outside the intended training set contaminates model training, inflating apparent performance. Types: target leakage (predictor derived from outcome), temporal leakage (future data in training set), preprocessing leakage (normalisation across train/test split). A major source of overly optimistic AI performance claims.",
+   links:[]},
+
+  {m:"ai",t:"Transfer learning & foundation models",
+   d:"Transfer learning: using a model pre-trained on one task (e.g. ImageNet classification) as a starting point for a different task (e.g. chest X-ray diagnosis), requiring less labelled data. Foundation models (e.g. GPT-4, Med-PaLM 2, BioViL) are large pre-trained models adapted for healthcare tasks via fine-tuning or prompting.",
+   links:[]},
+
+  {m:"ai",t:"Convolutional neural network (CNN)",
+   d:"Deep learning architecture using convolutional layers to detect spatial features in images. Highly effective for medical image analysis (radiology, pathology, retinal imaging). Key architectures: ResNet, VGG, U-Net (segmentation), YOLO (object detection). Requires large labelled datasets and GPU compute.",
+   links:[]},
+
+  {m:"ai",t:"Natural language processing (NLP)",
+   d:"AI techniques for understanding, generating, and transforming human language. Healthcare applications: clinical note summarisation, ICD coding automation, adverse event detection, patient triage chatbots. Transformer models (BERT, GPT) dominate; clinical-specific models (BioBERT, ClinicalBERT) improve performance on healthcare text.",
+   links:[]},
+
+  {m:"ai",t:"Large Language Models (LLMs) in healthcare",
+   d:"GPT-4-class models with broad language capabilities increasingly evaluated for clinical use: differential diagnosis generation, patient communication drafting, documentation. Key concerns: hallucination (plausible but false outputs), lack of source citation, inconsistency, and difficulty evaluating safety at scale. Require robust human oversight frameworks.",
+   links:[]},
+
+  {m:"ai",t:"PCA / dimensionality reduction",
+   d:"Principal Component Analysis: linear transformation finding orthogonal axes of maximum variance in high-dimensional data. Reduces features, removes multicollinearity, enables visualisation. Non-linear alternatives: t-SNE, UMAP (preserves local structure, popular for single-cell genomics and EHR embedding visualisation).",
+   links:[]},
+
+  {m:"ai",t:"Model drift & monitoring",
+   d:"Degradation in deployed model performance over time due to changes in patient population, clinical practice, or data collection. Data drift (input distribution changes) vs concept drift (relationship between inputs and outcome changes). Requires ongoing monitoring dashboards, defined performance thresholds, and re-training pipelines.",
+   links:[]},
 ];
 
 let active=null;
@@ -231,15 +567,22 @@ function render(){
     if(q&&!item.t.toLowerCase().includes(q)&&!item.d.toLowerCase().includes(q))return;
     groups[item.m].push(item);
   });
-  let html='';
-  let total=0;
+  let html='';let total=0;
   MODULES.forEach(mod=>{
     const cards=groups[mod.id];
     if(!cards||!cards.length)return;
     total+=cards.length;
     html+=`<section class="section"><div class="section-label">${mod.label}</div><div class="cards">`;
     cards.forEach(c=>{
-      html+=`<div class="card m-${c.m}"><div class="term">${highlight(c.t,q)}</div><div class="def">${highlight(c.d,q)}</div><span class="tag m-${c.m}">${mod.label}</span></div>`;
+      let linksHtml='';
+      if(c.links&&c.links.length){
+        linksHtml='<div class="link-row">';
+        c.links.forEach(lk=>{
+          linksHtml+=`<a class="ref-link m-${c.m}" href="${lk.u}" target="_blank" rel="noopener">${lk.l} ↗</a>`;
+        });
+        linksHtml+='</div>';
+      }
+      html+=`<div class="card m-${c.m}"><div class="term">${hi(c.t,q)}</div><div class="def">${hi(c.d,q)}</div>${linksHtml}<span class="tag m-${c.m}">${mod.label}</span></div>`;
     });
     html+='</div></section>';
   });
@@ -247,10 +590,9 @@ function render(){
   document.getElementById('out').innerHTML=html;
   document.getElementById('countbadge').textContent=total+' term'+(total===1?'':'s');
 }
-function highlight(text,q){
+function hi(text,q){
   if(!q)return text;
-  const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
-  return text.replace(re,'<mark style="background:rgba(255,200,0,0.35);border-radius:2px;padding:0 1px">$1</mark>');
+  return text.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>');
 }
 function buildChips(){
   const row=document.getElementById('chips');
@@ -264,7 +606,7 @@ function buildChips(){
     c.onclick=()=>{
       active=active===mod.id?null:mod.id;
       document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
-      if(active){c.classList.add('active');}else{all.classList.add('active');}
+      if(active)c.classList.add('active');else all.classList.add('active');
       render();
     };
     row.appendChild(c);
